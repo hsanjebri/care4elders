@@ -6,6 +6,8 @@ import lombok.Setter;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,7 +16,7 @@ import java.util.Date;
 public class DietPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long planId;
+    private Long IdDiet;
 
     @Temporal(TemporalType.DATE)
     private Date startDate;
@@ -23,4 +25,8 @@ public class DietPlan {
     private Date endDate;
 
     private String planDescription;
+
+    @OneToMany(mappedBy = "dietPlan", cascade = CascadeType.ALL)
+    private List<MealRecommendation> mealRecommendations;
+
 }

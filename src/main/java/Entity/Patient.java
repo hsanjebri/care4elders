@@ -14,7 +14,7 @@ import java.util.Date;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long patientID;
+    private long IdPatient;
 
     private String patientName;
 

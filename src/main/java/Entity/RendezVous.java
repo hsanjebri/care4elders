@@ -14,11 +14,12 @@ import java.util.Date;
 public class RendezVous {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int rdvId;
+    private Long IdRdv;
 
-    private Date rdvTime;
+    @Temporal(TemporalType.DATE)
+    private Date appointmentDate;
 
-    private String rdvCondition;
+    private String appointmentStatus;
 
 
 }

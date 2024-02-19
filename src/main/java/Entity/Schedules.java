@@ -17,7 +17,7 @@ import java.util.Date;
 public class Schedules {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int frequencyId;
+    private Long IdScheules;
 
     private String description;
 

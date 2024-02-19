@@ -21,7 +21,7 @@ import java.util.Date;
 public class Prescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int prescId;
+    private Long IdPres;
     private String medicamentList;
     private String medInstruction;
 

@@ -14,7 +14,7 @@ public class Equipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer itemId;
+    private Long IdEquipment;
 
     private String itemName;
     private String category;
@@ -22,6 +22,12 @@ public class Equipment {
 
     @Temporal(TemporalType.DATE)
     private Date purchaseDate;
-    private int price;
+
+    private float price;
+
     private String detail;
+
+
+
+
 }

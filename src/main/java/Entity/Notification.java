@@ -1,24 +1,29 @@
 package Entity;
+
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.*;
 
 import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class MealRecommendation {
+public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdRecommendation;
+    Long notificationId;
 
-    private String recommendedMeal;
+    String message;
 
     @Temporal(TemporalType.DATE)
-    private Date recommendationDate;
+    Date createdAt;
+
+    boolean isRead;
+
 
 }

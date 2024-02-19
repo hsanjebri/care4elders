@@ -20,13 +20,18 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int eventID;
+    private Long IdEvent;
 
     private String eventName;
+
     @Temporal(TemporalType.DATE)
     private Date eventDate;
+
     private String eventLocation;
+
     private String eventDescription;
+
     private String eventAttachment;
+
     @Enumerated(EnumType.STRING)
     private EventType eventType;}
