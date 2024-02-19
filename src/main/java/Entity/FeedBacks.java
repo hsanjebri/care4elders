@@ -15,14 +15,18 @@ import java.util.Date;
 public class FeedBacks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int feedbackId;
-    private int patientId;
-    @Temporal(TemporalType.DATE)
+    private Long  Idfeedback;
 
+    @Temporal(TemporalType.DATE)
     private Date feedbackCreatedAt;
+
     private String feedbackContent;
+
     private String feedbackTitle;
-    private boolean feedbackVerified;
+
+
+
     private float feedbackRating;
+
 
 }

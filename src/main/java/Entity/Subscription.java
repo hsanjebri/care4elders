@@ -15,8 +15,8 @@ public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int subscriptionID;
-
+    private long subscriptionID;
+/////////?????
     private int subscriptionDuration;
 
     @Temporal(TemporalType.DATE)

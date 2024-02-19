@@ -3,6 +3,7 @@ package Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import javax.management.relation.Role;
 import java.util.Date;
 
 @Getter
@@ -14,7 +15,7 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userID;
+    private long IdUser;
 
     private String Name;
 
@@ -22,9 +23,15 @@ public class User {
 
     private String Email;
 
-    private int BirthDay;
+    private Date BirthDay;
 
     private String Address;
+
+    private Integer zipCode;
+
+    private String city;
+
+    private String country;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
@@ -32,7 +39,7 @@ public class User {
     private String Phone;
 
     @Enumerated(EnumType.STRING)
-    private JobTitle JobTitle;
+    private Role role;
 
     private String LicenceDetails;
 

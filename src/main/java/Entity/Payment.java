@@ -15,10 +15,14 @@ import java.util.Date;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int paymentId;
+    private Long    IdPayment ;
     private Date paymentCreatedAt;
+
     private String paymentDescription;
+
     private float paymentAmount;
+
+    //////status hedhi tji enumeration     PENDING, IN_PROGRESS, DELIVERED
     private float paymentVerified;
 
     @Temporal(TemporalType.DATE)

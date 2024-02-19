@@ -16,11 +16,16 @@ public class Funeral {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer funeralId;
+    private Long IdFuneral;
 
     private String funeralServiceProvider;
+
+
     private String contactPersonForArrangements;
+
     private String contactPersonRelationshipToPatient;
+
     private String contactPersonPhoneNumber;
+
     private Double estimatedFuneralExpenses;
 }

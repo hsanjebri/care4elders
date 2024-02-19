@@ -1,28 +1,28 @@
 package Entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.*;
-import java.util.Date;
-@Getter
+
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Message {
+public class Service {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdMessage;
+    private  Long IdService ;
 
-    @Temporal(TemporalType.DATE)
-    private Date SentTime ;
+    private String serviceName;
+    private String serviceDescription;
+    private double servicePrice;
 
-    private String messageTitle;
 
-    private String messageBody;}
+
+}

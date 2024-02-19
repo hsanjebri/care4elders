@@ -17,7 +17,7 @@ import lombok.*;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int medId;
+    private long IdMedecin;
 
     private String medName;
     private String medDescription;
@@ -25,5 +25,6 @@ import lombok.*;
 
     @Enumerated(EnumType.STRING)
     private MedicineForm medForm;
+
     private String medInteraction;
 }
