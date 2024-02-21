@@ -1,6 +1,6 @@
 package Entity;
 
-public enum Alergies {
+public enum Alergie {
     PEANUTS,
     GLUTEN,
     DAIRY,

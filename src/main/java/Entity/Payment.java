@@ -29,4 +29,8 @@ public class Payment {
     private Date paymentExpiredAt;
     @Enumerated(EnumType.STRING)
     private PaymentM paymentMethod;
+
+
+    @ManyToOne
+    Patient patient;
 }

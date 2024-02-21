@@ -22,4 +22,7 @@ public class RendezVous {
     private String appointmentStatus;
 
 
+
+    @ManyToOne
+    Patient patient;
 }

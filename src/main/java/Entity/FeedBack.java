@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 
-public class FeedBacks {
+public class FeedBack {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long  Idfeedback;
@@ -29,4 +29,6 @@ public class FeedBacks {
     private float feedbackRating;
 
 
+    @ManyToOne
+    Patient patient;
 }

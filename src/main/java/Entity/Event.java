@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,4 +35,16 @@ public class Event {
     private String eventAttachment;
 
     @Enumerated(EnumType.STRING)
-    private EventType eventType;}
+    private EventType eventType;
+
+
+    @ManyToMany(mappedBy="events", cascade = CascadeType.ALL)
+    private List<Patient> patients;
+
+
+
+    @ManyToOne
+    User user;
+
+
+}

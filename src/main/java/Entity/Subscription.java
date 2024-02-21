@@ -28,4 +28,10 @@ public class Subscription {
     private float subscriptionFee;
 
     private boolean status;
+
+
+
+
+    @OneToOne(mappedBy="subscription")
+    private Patient patient;
 }

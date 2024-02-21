@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.management.relation.Role;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -52,4 +53,28 @@ public class User {
     private String EmergencyContact;
 
     private String AvailabilityShift;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private List<Task> tasks;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private List<Message> messages;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private List<Schedule> schedules;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private List<Event> events;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+    private List<Service> services;
+
+
+   @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+   private List<Notification> notifications;
+
+
 }
