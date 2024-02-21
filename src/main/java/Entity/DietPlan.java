@@ -26,7 +26,11 @@ public class DietPlan {
 
     private String planDescription;
 
-    @OneToMany(mappedBy = "dietPlan", cascade = CascadeType.ALL)
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<MealRecommendation> mealRecommendations;
+
+    @ManyToOne
+    Patient patient;
 
 }

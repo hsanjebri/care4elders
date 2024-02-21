@@ -14,7 +14,7 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long taskId;
+    private Long IdTask;
 
     private String taskTitle;
 
@@ -27,4 +27,12 @@ public class Task {
     private String taskDescription;
 
     private boolean taskStatus;
+
+
+    @ManyToOne
+    Patient patient;
+
+
+    @ManyToOne
+    User user;
 }

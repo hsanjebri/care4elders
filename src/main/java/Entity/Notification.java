@@ -13,6 +13,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +25,13 @@ public class Notification {
     Date createdAt;
 
     boolean isRead;
+
+    @ManyToOne
+    Patient patient;
+
+
+    @ManyToOne
+    User user;
 
 
 }

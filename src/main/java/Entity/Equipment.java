@@ -28,6 +28,7 @@ public class Equipment {
     private String detail;
 
 
-
+    @ManyToOne
+    Patient patient;
 
 }

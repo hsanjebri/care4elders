@@ -28,4 +28,8 @@ public class Funeral {
     private String contactPersonPhoneNumber;
 
     private Double estimatedFuneralExpenses;
+
+
+    @OneToOne(mappedBy="funeral")
+    private Patient patient;
 }

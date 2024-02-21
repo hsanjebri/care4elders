@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,7 +36,7 @@ public class Patient {
     private String patientMedicalHistroy;
 
     @Enumerated(EnumType.STRING)
-    private Alergies patientAlergies;
+    private Alergie patientAlergies;
 
     private String patientCurrentMedication;
 
@@ -46,5 +47,54 @@ public class Patient {
     private String patientInsurancePolicy;
 
 
+
+    @OneToOne
+    private Funeral funeral;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Payment> payments;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Prescription> prescriptions;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<DietPlan> dietPlans;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<FeedBack> feedBacks;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Complaint> complaints;
+
+
+    @OneToOne
+    private Subscription subscription;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<RendezVous> rendezVousList;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Task> tasks;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Message> messages;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Notification> notifications;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    private List<Equipment> equipments;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Event> events;
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+     List<Service> services;
 
 }

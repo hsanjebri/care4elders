@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Schedules {
+public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdScheules;
@@ -26,6 +26,11 @@ public class Schedules {
 
     @Temporal(TemporalType.DATE)
     private Date endTime;
+
+    @ManyToOne
+    User user;
+
+
 
 
 }

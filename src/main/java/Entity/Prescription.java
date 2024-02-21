@@ -11,6 +11,7 @@ import java.util.Date;
 
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +30,12 @@ public class Prescription {
     private Date medExpireDate;
 
 
+    @ManyToOne
+    Patient patient;
+
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Medicine> medicines;
 
 
 }

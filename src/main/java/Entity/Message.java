@@ -25,4 +25,13 @@ public class Message {
 
     private String messageTitle;
 
-    private String messageBody;}
+    private String messageBody;
+
+    @ManyToOne
+    Patient patient;
+
+
+    @ManyToOne
+    User user;
+
+}
