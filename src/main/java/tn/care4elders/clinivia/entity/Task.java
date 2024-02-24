@@ -29,10 +29,5 @@ public class Task {
     private boolean taskStatus;
 
 
-    @ManyToOne
-    Patient patient;
 
-
-    @ManyToOne
-    User user;
 }
