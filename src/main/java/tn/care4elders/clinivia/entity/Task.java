@@ -32,7 +32,9 @@ public class Task {
     @ManyToOne
     Patient patient;
 
-
     @ManyToOne
     User user;
+
+
+
 }
