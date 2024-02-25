@@ -33,6 +33,12 @@ public class Task {
     Patient patient;
 
 
+
+    @ManyToOne
+    User user;
+
+
+
     @ManyToOne
     User user;
 }
