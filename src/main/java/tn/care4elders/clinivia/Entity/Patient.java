@@ -43,7 +43,6 @@ public class Patient {
     private String patientCurrentMedication;
 
 
-
     @OneToOne
     private Funeral funeral;
 
