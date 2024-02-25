@@ -6,11 +6,10 @@ import lombok.*;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
+
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Data
 @Entity
 
 
@@ -19,28 +18,30 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long IdPatient;
 
-    private String patientName;
+    private String name;
 
     private String patientPassword;
 
     @Temporal(TemporalType.DATE)
-    private Date patientBirthDay;
+    private Date date;
 
-    private String patientAddress;
+    private String address;
+
+    private String bGroup;
 
     @Enumerated(EnumType.STRING)
     private Gender Gender;
 
-    private String patientPhone;
+    private String mobile;
 
     private String patientContactEmergencies;
 
-    private String patientMedicalHistroy;
+    private String MedicalHistroy;
 
     @Enumerated(EnumType.STRING)
     private Alergie patientAlergies;
 
-    private String patientCurrentMedication;
+    private String treatment;
 
 
 
