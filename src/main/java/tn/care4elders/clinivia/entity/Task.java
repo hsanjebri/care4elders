@@ -29,9 +29,18 @@ public class Task {
     private boolean taskStatus;
 
     @ManyToOne
+<<<<<<< HEAD
     Patient patient;
 
     @ManyToOne
     User user;
+=======
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+>>>>>>> f3fbe0b539a83b2e7f2879c24731565a30e2d4cc
 
 }
