@@ -6,7 +6,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.Prescription;
-import tn.care4elders.clinivia.service.serviceImpl.IPrescriptionService;
+import tn.care4elders.clinivia.service.IPrescriptionService;
+//import tn.care4elders.clinivia.service.serviceImpl.IPrescriptionService;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class PrescriptionController {
 
-    IPrescriptionService  prescriptionService ;
+    IPrescriptionService prescriptionService ;
 
     // Order 1
     @PostMapping("add")
