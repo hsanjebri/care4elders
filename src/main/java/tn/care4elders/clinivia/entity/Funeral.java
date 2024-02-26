@@ -30,15 +30,4 @@ public class Funeral {
 
     @OneToOne(mappedBy="funeral")
     private Patient patient;
-<<<<<<< HEAD
-=======
-
-    public Long getId() {
-        return IdFuneral;
-    }
-
-    public void setId(Long IdFuneral) {
-        this.IdFuneral = IdFuneral;
-    }
->>>>>>> f3fbe0b539a83b2e7f2879c24731565a30e2d4cc
 }
