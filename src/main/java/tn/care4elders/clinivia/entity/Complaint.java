@@ -11,7 +11,10 @@ import java.util.Date;
 @NoArgsConstructor
 
 @Entity
-public class Complaint {
+public class
+
+
+Complaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdComplaints;
