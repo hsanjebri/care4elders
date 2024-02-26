@@ -1,7 +1,10 @@
 package tn.care4elders.clinivia.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.User;
@@ -11,8 +14,12 @@ import java.util.Optional;
 import java.util.Set;
 
 @RestController
+@AllArgsConstructor
+@Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@RequestMapping("/UserController")
+@RequestMapping("api/UserController")
+@Tag(name = "Gestion des Users",description = "les apis pour gérer tout les Users")
+
 
 public class UserController {
     @Autowired

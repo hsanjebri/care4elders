@@ -96,6 +96,14 @@ public class SpringDocConfig {
 
                 .build();
     }
+    @Bean
+    public GroupedOpenApi userPublicApi() {
+        return GroupedOpenApi.builder()
+                .group("Only User Management API")
+                .pathsToMatch("/api/User/**")
+                .pathsToExclude("**")
+                .build();
+    }
 
 }
 
