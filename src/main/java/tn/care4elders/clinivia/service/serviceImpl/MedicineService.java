@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Medicine;
 import tn.care4elders.clinivia.repository.MedicineRepository;
 
+
 import java.util.List;
 
 @Service
@@ -15,6 +16,7 @@ import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class MedicineService implements tn.care4elders.clinivia.service.MedicineService {
+
     MedicineRepository medicineRepo  ;
 
     @Override

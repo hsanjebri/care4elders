@@ -7,8 +7,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.Medicine;
-import tn.care4elders.clinivia.service.MedicineService;
 
+import tn.care4elders.clinivia.service.MedicineService;
 
 import java.util.List;
 
