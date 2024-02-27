@@ -75,7 +75,7 @@ public class Patient {
     private Subscription subscription;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
-    private List<RendezVous> rendezVousList;
+    private List<Appointment> appointmentList;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
