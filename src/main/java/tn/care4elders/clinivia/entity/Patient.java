@@ -44,7 +44,6 @@ public class Patient {
     private String treatment;
 
 
-
     @OneToOne
     private Funeral funeral;
 
@@ -95,7 +94,7 @@ public class Patient {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
-     List<Service> services;
+     List<Iervice> iervices;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
