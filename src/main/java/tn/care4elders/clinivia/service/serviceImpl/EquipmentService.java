@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Equipment;
-import tn.care4elders.clinivia.repository.EquipmentRepo;
+import tn.care4elders.clinivia.repository.EquipmentRepository;
 import tn.care4elders.clinivia.service.IEquipmentService;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class EquipmentService implements IEquipmentService {
-    EquipmentRepo equipmentRepo  ;
+    EquipmentRepository equipmentRepo  ;
 
     @Override
     public Equipment addEquipment(Equipment equipment) {

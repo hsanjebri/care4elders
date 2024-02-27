@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Prescription;
-import tn.care4elders.clinivia.repository.PrescriptionRepo;
+import tn.care4elders.clinivia.repository.PrescriptionRepository;
 import tn.care4elders.clinivia.service.IPrescriptionService;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class PrescriptionService implements IPrescriptionService {
-    PrescriptionRepo prescriptionRepo  ;
+    PrescriptionRepository prescriptionRepo  ;
 
     @Override
     public Prescription addPrescription(Prescription prescription) {

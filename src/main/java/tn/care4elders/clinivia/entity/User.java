@@ -69,7 +69,7 @@ public class User {
     private List<Event> events;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-    private List<Service> services;
+    private List<Iervice> services;
 
 
    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
