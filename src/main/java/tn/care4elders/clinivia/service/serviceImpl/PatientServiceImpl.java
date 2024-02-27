@@ -14,12 +14,13 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 
 public class PatientServiceImpl implements PatientService {
 
-    @Autowired
     PatientRepository patientRepository;
+
+     PatientRepository patientRepository;
+
 
     @Override
     public Patient savePatient(Patient patient) {
