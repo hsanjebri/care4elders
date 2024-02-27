@@ -3,6 +3,7 @@ package tn.care4elders.clinivia.service.serviceImpl;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.repository.PatientRepository;
@@ -13,12 +14,10 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-@NoArgsConstructor
 
 public class PatientServiceImpl implements PatientService {
 
-
-    public PatientRepository patientRepository;
+     PatientRepository patientRepository;
 
     @Override
     public Patient savePatient(Patient patient) {
