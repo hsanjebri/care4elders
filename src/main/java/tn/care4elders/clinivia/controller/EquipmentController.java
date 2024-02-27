@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.Equipment;
-import tn.care4elders.clinivia.service.IEquipmentService;
+import tn.care4elders.clinivia.service.EquipmentService;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("api/Equipments")
 
 public class EquipmentController {
-    IEquipmentService equipmentService ;
+    EquipmentService equipmentService ;
 
     // Order 1
     @PostMapping("add")
