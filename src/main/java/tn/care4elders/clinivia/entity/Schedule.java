@@ -17,15 +17,20 @@ import java.util.Date;
 public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdScheules;
+
+    private Long IdSchedule;
 
     private String description;
 
-    @Temporal(TemporalType.DATE)
-    private Date startTime;
+    private Date startDate;
 
-    @Temporal(TemporalType.DATE)
-    private Date endTime;
+
+    private Date endDate;
+
+
+
+
+
 
     @ManyToOne
     User user;

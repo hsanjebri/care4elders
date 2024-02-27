@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PatientController {
 
-    private final PatientService patientService;
+     PatientService patientService;
 
 
 
