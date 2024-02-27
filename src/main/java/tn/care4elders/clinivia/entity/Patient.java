@@ -94,7 +94,7 @@ public class Patient {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
-     List<Iervice> services;
+     List<Iervice> iervices;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
