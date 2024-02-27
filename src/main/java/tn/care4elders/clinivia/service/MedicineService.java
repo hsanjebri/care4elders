@@ -4,7 +4,7 @@ import tn.care4elders.clinivia.entity.Medicine;
 
 import java.util.List;
 
-public interface IMedicineService {
+public interface MedicineService {
     Medicine addMedicine(Medicine Medicine);
     List<Medicine> getAllMedicines();
     Medicine getMedicineById(long idMedicine);
