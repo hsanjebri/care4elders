@@ -4,7 +4,7 @@ import tn.care4elders.clinivia.entity.User;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
 
 public interface IserviceUser {
     User addUser (User user);

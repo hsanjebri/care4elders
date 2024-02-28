@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.User;
 import tn.care4elders.clinivia.repository.UserRepository;
 import tn.care4elders.clinivia.service.IserviceUser;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
 
 @Service
 
