@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.User;
 import tn.care4elders.clinivia.service.serviceImpl.ServiceUserImpl;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ public class UserController {
         return serviceUser.getUserById(idUser);
     }
     @GetMapping("/getAllUsers")
-    Set<User> gettingAllUsers(){
+    List<User> gettingAllUsers(){
         return serviceUser.getAllUsers();
     }
 }
