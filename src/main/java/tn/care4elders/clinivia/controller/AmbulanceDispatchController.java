@@ -21,32 +21,32 @@ public class AmbulanceDispatchController {
         this.ambulanceDispatchService = ambulanceDispatchService;
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<AmbulanceDispatch> addAmbulanceDispatch(@RequestBody AmbulanceDispatch ambulanceDispatch) {
         AmbulanceDispatch addedDispatch = ambulanceDispatchService.addAmbulanceDispatch(ambulanceDispatch);
         return new ResponseEntity<>(addedDispatch, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/update/{dispatchId}")
     public ResponseEntity<AmbulanceDispatch> updateAmbulanceDispatch(@RequestBody AmbulanceDispatch ambulanceDispatch) {
         AmbulanceDispatch updatedDispatch = ambulanceDispatchService.updateAmbulanceDispatch(ambulanceDispatch);
         return new ResponseEntity<>(updatedDispatch, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{dispatchId}")
+    @DeleteMapping("/delete/{dispatchId}")
     public ResponseEntity<Void> deleteAmbulanceDispatch(@PathVariable long dispatchId) {
         ambulanceDispatchService.deleteAmbulanceDispatch(dispatchId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/{dispatchId}")
+    @GetMapping("/get/{dispatchId}")
     public ResponseEntity<AmbulanceDispatch> getAmbulanceDispatchById(@PathVariable long dispatchId) {
         Optional<AmbulanceDispatch> dispatch = ambulanceDispatchService.getAmbulanceDispatchById(dispatchId);
         return dispatch.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping
+    @GetMapping("/getall")
     public ResponseEntity<List<AmbulanceDispatch>> getAllAmbulanceDispatches() {
         List<AmbulanceDispatch> dispatches = ambulanceDispatchService.getAllAmbulanceDispatches();
         return new ResponseEntity<>(dispatches, HttpStatus.OK);
