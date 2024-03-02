@@ -6,8 +6,9 @@ import tn.care4elders.clinivia.entity.User;
 import tn.care4elders.clinivia.repository.UserRepository;
 import tn.care4elders.clinivia.service.IserviceUser;
 
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
+
 
 @Service
 
@@ -39,7 +40,7 @@ public class ServiceUserImpl implements IserviceUser {
     }
 
     @Override
-    public Set<User> getAllUsers() {
-        return (Set<User>) userRepository.findAll();
+    public List<User> getAllUsers() {
+        return (List<User>) userRepository.findAll();
     }
 }

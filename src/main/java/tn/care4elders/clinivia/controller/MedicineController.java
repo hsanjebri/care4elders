@@ -7,8 +7,8 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.Medicine;
-import tn.care4elders.clinivia.service.IMedicineService;
-//import tn.care4elders.clinivia.service.serviceImpl.IMedicineService;
+
+import tn.care4elders.clinivia.service.MedicineService;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @Tag(name = "Gestion des Medicines",description = "les apis pour gérer tout les Medicines")
 
 public class MedicineController {
-    IMedicineService medicineService ;
+    MedicineService medicineService ;
 
     // Order 1
     @PostMapping("add")

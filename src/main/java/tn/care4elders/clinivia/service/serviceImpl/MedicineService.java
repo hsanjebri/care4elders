@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Medicine;
 import tn.care4elders.clinivia.repository.MedicineRepository;
-import tn.care4elders.clinivia.service.IMedicineService;
+
 
 import java.util.List;
 
@@ -15,7 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MedicineService implements IMedicineService {
+public class MedicineService implements tn.care4elders.clinivia.service.MedicineService {
+
     MedicineRepository medicineRepo  ;
 
     @Override

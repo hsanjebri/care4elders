@@ -14,7 +14,7 @@ import java.util.Date;
 public class Complaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdComplaints;
+    private long IdComplaints;
 
     @Temporal(TemporalType.DATE)
     private Date complaintDate;

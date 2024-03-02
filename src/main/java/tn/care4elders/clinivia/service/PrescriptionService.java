@@ -4,7 +4,7 @@ import tn.care4elders.clinivia.entity.Prescription;
 
 import java.util.List;
 
-public interface IPrescriptionService {
+public interface PrescriptionService {
     Prescription addPrescription(Prescription Prescription);
     List<Prescription> getAllPrescriptions();
     Prescription getPrescriptionById(long idPrescription);
