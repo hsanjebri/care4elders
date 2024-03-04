@@ -27,21 +27,21 @@ public class AmbulanceDispatchController {
         return new ResponseEntity<>(addedDispatch, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{dispatchId}")
+    @PutMapping("/update")
     public ResponseEntity<AmbulanceDispatch> updateAmbulanceDispatch(@RequestBody AmbulanceDispatch ambulanceDispatch) {
         AmbulanceDispatch updatedDispatch = ambulanceDispatchService.updateAmbulanceDispatch(ambulanceDispatch);
         return new ResponseEntity<>(updatedDispatch, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{dispatchId}")
-    public ResponseEntity<Void> deleteAmbulanceDispatch(@PathVariable long dispatchId) {
-        ambulanceDispatchService.deleteAmbulanceDispatch(dispatchId);
+    public ResponseEntity<Void> deleteAmbulanceDispatch(@PathVariable long Id) {
+        ambulanceDispatchService.deleteAmbulanceDispatch(Id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/get/{dispatchId}")
-    public ResponseEntity<AmbulanceDispatch> getAmbulanceDispatchById(@PathVariable long dispatchId) {
-        Optional<AmbulanceDispatch> dispatch = ambulanceDispatchService.getAmbulanceDispatchById(dispatchId);
+    public ResponseEntity<AmbulanceDispatch> getAmbulanceDispatchById(@PathVariable long Id) {
+        Optional<AmbulanceDispatch> dispatch = ambulanceDispatchService.getAmbulanceDispatchById(Id);
         return dispatch.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }

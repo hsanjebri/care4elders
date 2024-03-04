@@ -15,18 +15,16 @@ public class AmbulanceDispatch {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long dispatchId;
-
-        private boolean dispatchStatus;
-
-        private String serialNumber;
-
-        private String driverName;
-
-        private String hospitalDestination;
-
-
-        private int estimatedDuration;
+        private long Id;
+        private String case_no;
+        private String patient_name;
+        private String gender;
+        private String date;
+        private String vehicule_no;
+        private String driver_name;
+        private String driver_no;
+        private String patient_address;
+        private String note;
 
 
         @OneToOne
