@@ -19,7 +19,7 @@ public class PatientServiceImpl implements PatientService {
 
     PatientRepository patientRepository;
 
-     PatientRepository patientRepository;
+
 
 
     @Override
