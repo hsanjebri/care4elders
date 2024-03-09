@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Service {
+public class Iervice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
