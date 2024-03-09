@@ -27,7 +27,7 @@ public class Patient {
 
     private String address;
 
-    private String bGroup;
+    private String bGroupe ;
 
     @Enumerated(EnumType.STRING)
     private Gender Gender;
@@ -36,12 +36,16 @@ public class Patient {
 
     private String patientContactEmergencies;
 
-    private String MedicalHistroy;
+    private String medicalHistory;
 
     @Enumerated(EnumType.STRING)
     private Alergie patientAlergies;
 
     private String treatment;
+
+    private String image;
+    private String email ;
+
 
 
 

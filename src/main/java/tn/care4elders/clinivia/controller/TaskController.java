@@ -10,6 +10,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/tasks")
 @AllArgsConstructor
+@CrossOrigin("*")
+
 public class TaskController {
 
      TaskService taskService;
@@ -24,7 +26,7 @@ public class TaskController {
         return taskService.getTaskById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteTask(@PathVariable("id") Long id) {
         taskService.deleteTask(id);
     }

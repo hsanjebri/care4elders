@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/patients")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class PatientController {
 
      PatientService patientService;
@@ -27,7 +28,7 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deletePatient(@PathVariable("id") long id) {
         patientService.deletePatient(id);
     }
