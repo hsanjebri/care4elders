@@ -22,32 +22,32 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @PostMapping
+    @PostMapping("/Add")
     public ResponseEntity<Event> addEvent(@RequestBody Event event) {
         Event addedEvent = eventService.addEvent(event);
         return new ResponseEntity<>(addedEvent, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
         Event updatedEvent = eventService.updateEvent(event);
         return new ResponseEntity<>(updatedEvent, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{eventId}")
-    public ResponseEntity<Void> deleteEvent(@PathVariable Long eventId) {
-        eventService.deleteEvent(eventId);
+    @DeleteMapping("/delete/{IdEvent}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable Long IdEvent) {
+        eventService.deleteEvent(IdEvent);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/{eventId}")
-    public ResponseEntity<Event> getEventById(@PathVariable Long eventId) {
-        Optional<Event> event = eventService.getEventById(eventId);
+    @GetMapping("get/{IdEvent}")
+    public ResponseEntity<Event> getEventById(@PathVariable Long IdEvent) {
+        Optional<Event> event = eventService.getEventById(IdEvent);
         return event.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping
+    @GetMapping("/getall")
     public ResponseEntity<List<Event>> getAllEvents() {
         List<Event> events = eventService.getAllEvents();
         return new ResponseEntity<>(events, HttpStatus.OK);
