@@ -16,14 +16,11 @@ import lombok.*;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long IdMedecin;
-
     private String medName;
     private String medDescription;
     private String medDosage;
-
     @Enumerated(EnumType.STRING)
     private MedicineForm medForm;
-
     private String medInteraction;
     private String medPhoto ;
 }

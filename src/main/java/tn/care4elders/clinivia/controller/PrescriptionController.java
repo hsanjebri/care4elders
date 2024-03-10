@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin("*")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequestMapping("api/prescriptions")
 
