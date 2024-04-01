@@ -49,4 +49,14 @@ public class EquipmentController {
     public Equipment updatingEquipment(@RequestBody Equipment equipment){
         return equipmentService.updateEquipment(equipment);
     }
+
+    @GetMapping("/categories")
+    public List<String> getAllCategories() {
+        return equipmentService.getAllCategories();
+    }
+    @GetMapping("/getCategoryItemCounts")
+    public List<Integer> getCategoryItemCounts() {
+        return equipmentService.getCategoryItemCounts();
+    }
+
 }

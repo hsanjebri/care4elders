@@ -11,4 +11,7 @@ public interface EquipmentService {
     void deleteEquipment(long idEquipment);
     Equipment updateEquipment(Equipment Equipment);
 
+    List<Integer> getCategoryItemCounts();
+
+    List<String> getAllCategories();
 }
