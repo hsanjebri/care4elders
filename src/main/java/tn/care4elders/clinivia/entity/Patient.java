@@ -21,7 +21,6 @@ public class Patient {
 
     private String name;
     private String img;
-    private String gender;
     private String mobile;
 
 
@@ -39,7 +38,6 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private Gender Gender;
 
-    private String mobile;
 
     private String patientContactEmergencies;
 
@@ -48,7 +46,6 @@ public class Patient {
     @Enumerated(EnumType.STRING)
     private Alergie patientAlergies;
 
-    private String treatment;
 
     private String image;
     private String email ;

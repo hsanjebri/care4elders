@@ -40,23 +40,6 @@ public class EquipmentService implements tn.care4elders.clinivia.service.Equipme
         return (Equipment) equipmentRepo.save(equipment);
     }
 
-    @Override
-    public List<Integer> getCategoryItemCounts() {
-        List<String> categories = equipmentRepo.findAllCategories();
-        Map<String, Integer> categoryItemCounts = new HashMap<>();
-        for (String category : categories) {
-            List<Equipment> equipments = equipmentRepo.findEquipmentByCategory(category);
-            categoryItemCounts.put(category, equipments.size());
-        }
-
-        // Convertir la map en une liste de nombres d'éléments
-        List<Integer> itemCounts = new ArrayList<>(categoryItemCounts.values());
-        return itemCounts;
-    }
 
 
-    @Override
-    public List<String> getAllCategories() {
-        return equipmentRepo.findAllCategories();
-    }
 }

@@ -50,13 +50,5 @@ public class EquipmentController {
         return equipmentService.updateEquipment(equipment);
     }
 
-    @GetMapping("/categories")
-    public List<String> getAllCategories() {
-        return equipmentService.getAllCategories();
-    }
-    @GetMapping("/getCategoryItemCounts")
-    public List<Integer> getCategoryItemCounts() {
-        return equipmentService.getCategoryItemCounts();
-    }
 
 }
