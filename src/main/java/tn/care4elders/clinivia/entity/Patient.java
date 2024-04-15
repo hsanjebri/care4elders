@@ -33,7 +33,25 @@ public class Patient {
 
     private String address;
 
-    private String bGroup;
+    private String bGroupe ;
+
+
+    @Enumerated(EnumType.STRING)
+    private Gender Gender;
+
+    private String mobile;
+
+    private String patientContactEmergencies;
+
+    private String medicalHistory;
+
+    @Enumerated(EnumType.STRING)
+    private Alergie patientAlergies;
+
+    private String treatment;
+
+    private String image;
+    private String email ;
 
 
 
