@@ -2,8 +2,6 @@ package tn.care4elders.clinivia.service.serviceImpl;
 
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.repository.PatientRepository;
@@ -32,6 +30,8 @@ public class PatientServiceImpl implements PatientService {
         return patientOptional.orElse(null);
     }
 
+
+
     @Override
     public void deletePatient(long id) {
         patientRepository.deleteById(id);
@@ -47,6 +47,12 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.save(patient);
 
     }
+
+//shadha
+@Override
+public Patient getPatientByAddress(String email) {
+    return patientRepository.findByAddress(email);
+}
 
 
 }

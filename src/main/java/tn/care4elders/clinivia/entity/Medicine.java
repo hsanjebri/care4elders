@@ -2,8 +2,11 @@ package tn.care4elders.clinivia.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,12 +18,17 @@ import lombok.*;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdMedecin;
-    private String medName;
+    private long id;
+    private String m_name;
     private String medDescription;
     private String medDosage;
     @Enumerated(EnumType.STRING)
     private MedicineForm medForm;
-    private String medInteraction;
     private String medPhoto ;
+
+    @JsonIgnore
+     @ManyToMany(mappedBy="medicines",fetch = FetchType.LAZY)
+    private List<Prescription> prescriptions ;
+
+
 }

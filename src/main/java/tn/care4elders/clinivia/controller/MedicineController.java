@@ -17,8 +17,7 @@ import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @CrossOrigin("*")
-@RequestMapping("/Medicines")
-@Tag(name = "Gestion des Medicines",description = "les apis pour gérer tout les Medicines")
+@RequestMapping("Medicines/")
 
 public class MedicineController {
     MedicineService medicineService ;

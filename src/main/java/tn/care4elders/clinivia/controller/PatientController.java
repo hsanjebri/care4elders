@@ -27,6 +27,8 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
 
+
+
     @DeleteMapping("/{id}")
     public void deletePatient(@PathVariable("id") long id) {
         patientService.deletePatient(id);
@@ -42,4 +44,13 @@ public class PatientController {
         return patientService.updatePatient( patient);
     }
 
+
+
+    //shadha
+
+    @GetMapping("/getPatientByAdresse/{address}")
+    public Patient getPatientByAddress(@PathVariable("address") String address) { return patientService.getPatientByAddress(address);
+
+
+    }
 }
