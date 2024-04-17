@@ -50,8 +50,8 @@ public class PatientServiceImpl implements PatientService {
 
 //shadha
 @Override
-public Patient getPatientByAddress(String email) {
-    return patientRepository.findByAddress(email);
+public Patient getPatientByEmail(String email) {
+    return patientRepository.findByEmail(email);
 }
 
 

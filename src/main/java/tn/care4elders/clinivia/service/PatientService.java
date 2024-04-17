@@ -27,5 +27,5 @@ public interface PatientService {
     public Patient updatePatient( Patient patient);
 
     //shadha
-    Patient getPatientByAddress(String address);
+    Patient getPatientByEmail(String address);
 }

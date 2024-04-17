@@ -6,7 +6,9 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.Medicine;
+import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.entity.Prescription;
+import tn.care4elders.clinivia.service.PatientService;
 import tn.care4elders.clinivia.service.PrescriptionService;
 
 
@@ -22,6 +24,7 @@ import java.util.List;
 public class PrescriptionController {
 
     PrescriptionService prescriptionService ;
+    PatientService patientService;
 
     // Order 1
     @PostMapping("/add")
@@ -50,9 +53,25 @@ public class PrescriptionController {
     // Order 5
     @PutMapping("/update")
     public Prescription updatingPrescription(@RequestBody Prescription prescription){
-        return prescriptionService.updatePrescription(prescription);
+
+        return prescriptionService.updatePrescription( prescription);
     }
 
+    @PostMapping("/Addmedicines/{prescriptionId}")
+    public Prescription addMedicinesToPrescription(@PathVariable Long prescriptionId, @RequestBody List<Long> medicineIds) {
+        return prescriptionService.addMedicinesToPrescription(prescriptionId, medicineIds);
+    }
+
+    @GetMapping("/GetMedicines/{prescriptionId}")
+    public List<Medicine> getMedicinesByPrescriptionId(@PathVariable Long prescriptionId) {
+        return prescriptionService.getMedicinesByPrescriptionId(prescriptionId);
+    }
+
+    @PostMapping("/generate_prescription/{id}")
+    public Prescription generatePrescription(@PathVariable Long id,@RequestBody List<String> symptoms ) {
+
+        return prescriptionService.generatePrescription(id, symptoms);
+    }
 
 
 }

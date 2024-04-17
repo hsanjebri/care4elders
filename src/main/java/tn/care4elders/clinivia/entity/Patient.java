@@ -29,24 +29,14 @@ public class Patient {
 
     @Temporal(TemporalType.DATE)
     private Date date;
-
     private String address;
-
     private String bGroupe ;
-
-
     @Enumerated(EnumType.STRING)
     private Gender Gender;
-
-
     private String patientContactEmergencies;
-
     private String medicalHistory;
-
     @Enumerated(EnumType.STRING)
     private Alergie patientAlergies;
-
-
     private String image;
     private String email ;
 

@@ -49,7 +49,7 @@ public class PatientController {
     //shadha
 
     @GetMapping("/getPatientByAdresse/{address}")
-    public Patient getPatientByAddress(@PathVariable("address") String address) { return patientService.getPatientByAddress(address);
+    public Patient getPatientByAddress(@PathVariable("address") String address) { return patientService.getPatientByEmail(address);
 
 
     }

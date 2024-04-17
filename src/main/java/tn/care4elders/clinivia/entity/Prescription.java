@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.*;
-import tn.care4elders.clinivia.repository.MedicineRepository;
 
 import java.util.Date;
 
@@ -30,8 +29,12 @@ public class Prescription {
     private String EmailPatient ;
     @Temporal(TemporalType.DATE)
     private Date createdDate;
-    @Transient
-    private List<Medicine> Allmedicines;
+    private String description ;
+    private Long doctor_id ;
+   private String symptoms;
+    //for the generator
+    private boolean approved ;
+    private String suggestedMedicines;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,12 +47,6 @@ public class Prescription {
     @ManyToOne(fetch = FetchType.LAZY)
     User doctor;
 
-  /**  public void addMedicine(Medicine medicine) {
-        medicines.add(medicine);
-        medicine.setPrescriptions(this); // Set bidirectional relationship
-
-
-   }*/
 
 
 }
