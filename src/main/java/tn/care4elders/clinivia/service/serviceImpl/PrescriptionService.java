@@ -15,6 +15,9 @@ import tn.care4elders.clinivia.service.PatientService;
 
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -33,7 +36,7 @@ public class PrescriptionService implements tn.care4elders.clinivia.service.Pres
     public Prescription addPrescription(Prescription prescription ) {
         prescription.setPatient(patientS.getPatientByEmail(prescription.getEmailPatient()));
         prescription.setDoctor(userS.getUserById(prescription.getDoctor_id()));
-
+prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getName());
 
         return (Prescription) prescriptionRepo.save(prescription);
     }
@@ -61,12 +64,14 @@ public class PrescriptionService implements tn.care4elders.clinivia.service.Pres
         }
     }
 
-
-
     @Override
     public Prescription updatePrescription( Prescription prescription) {
         prescription.setPatient(patientS.getPatientByEmail(prescription.getEmailPatient()));
         prescription.setDoctor(userS.getUserById(prescription.getDoctor_id()));
+        prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getName());
+
+        prescription.setApproved(true);
+
 
         return (Prescription) prescriptionRepo.save(prescription);
 
@@ -96,24 +101,41 @@ public class PrescriptionService implements tn.care4elders.clinivia.service.Pres
     }
 
 
+    public static List<String> extractWords(String str) {
+        List<String> words = new ArrayList<>();
 
+        // Regular expression to match words (alphanumeric characters and commas)
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9]+");
+        Matcher matcher = pattern.matcher(str);
+
+        // Iterate through matches and add them to the list
+        while (matcher.find()) {
+            words.add(matcher.group());
+        }
+
+        return words;
+    }
     //api
-    public Prescription generatePrescription(Long id, List<String> symptoms) {
-       Patient patient = patientS.getPatientById(id);
+    public Prescription generatePrescription(Prescription prescription ) {
+       Patient patient = patientS.getPatientById(prescription.getPpatient_id());
+       String symptoms = prescription.getSymptoms();
+// Remove formatting characters and split the string
+        List<String> symptomsList =extractWords(symptoms);
+
         String medicalHistory = patient.getMedicalHistory();
-        List<String> suggestedMedications = analyzeData(medicalHistory, symptoms);
+        List<String> suggestedMedications = analyzeData(medicalHistory, symptomsList);
 
 
-        Prescription prescription = new Prescription();
         prescription.setTitle("Generated Prescription");
-        prescription.setDiseases(String.join(", ", symptoms));
+        prescription.setSymptoms(String.join(", ", symptomsList));
         prescription.setApproved(false);
         prescription.setPatient(patient);
         prescription.setCreatedDate(new Date());
         prescription.setEmailPatient(patient.getEmail());
-        prescription.setSuggestedMedicines("Suggested medications: " + String.join(", ", suggestedMedications));
+        prescription.setSuggestedMedicines(
+                String.join(", ", suggestedMedications));
 
-        return prescription;
+        return (Prescription) prescriptionRepo.save(prescription);
     }
 
 
@@ -184,5 +206,49 @@ public class PrescriptionService implements tn.care4elders.clinivia.service.Pres
         return suggestedMedicationsSet;
     }
 
+    @Override
+    public List<Prescription> getPrescriptionsByPatientId(Long patientId) {
+        return prescriptionRepo.findByPatientId(patientId);
+    }
 
-}
+    @Override
+    public List<Prescription> getPrescriptionsByDoctorId(Long doctorId) {
+        return prescriptionRepo.findByDoctorId(doctorId);
+    }
+
+    public List<Integer> calculatePrescriptionStatisticsForDoctor(Long doctorId) {
+        List<Integer> statistics = new ArrayList<>();
+        int writtenPrescriptions = 0;
+        int approvedPrescriptions = 0;
+        List<Prescription> total_Prescriptions = this.getPrescriptionsByDoctorId(doctorId);
+
+        for (Prescription pres : total_Prescriptions) {
+            if (pres.getSuggestedMedicines() == null) {
+                // 1. Number of prescriptions with suggestedMedicine empty
+                writtenPrescriptions = writtenPrescriptions + 1;
+            } else {
+                // 2. Number of approved prescriptions
+                approvedPrescriptions = approvedPrescriptions + 1;
+            }
+        }
+            // 3. Total number of prescriptions
+            int totalPrescriptions = this.getAllPrescriptions().size();
+
+            // 4. Calculate the rest
+            int restPrescriptions = totalPrescriptions - (writtenPrescriptions + approvedPrescriptions);
+
+            statistics.add(writtenPrescriptions);
+            statistics.add(approvedPrescriptions);
+            statistics.add(restPrescriptions);
+            statistics.add(totalPrescriptions);
+
+            return statistics;
+        }
+
+    public List<Prescription> getAllUnapproved(){
+        return (List<Prescription>) prescriptionRepo.findAllByApprovedFalse();
+
+
+    }
+
+    }

@@ -31,10 +31,12 @@ public class Prescription {
     private Date createdDate;
     private String description ;
     private Long doctor_id ;
-   private String symptoms;
+    private Long ppatient_id ;
+    private String symptoms;
     //for the generator
     private boolean approved ;
     private String suggestedMedicines;
+    private String doctor_name ;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)

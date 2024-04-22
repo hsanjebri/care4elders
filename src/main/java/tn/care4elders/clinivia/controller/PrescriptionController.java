@@ -38,6 +38,11 @@ public class PrescriptionController {
         return prescriptionService.getAllPrescriptions();
     }
 
+    @GetMapping("/unApproved")
+    public List<Prescription> getAllUnapproved(){
+        return prescriptionService.getAllUnapproved();
+    }
+
     // Order 3
     @GetMapping("/get")
     public Prescription gettingPrescription (@RequestParam("idPrescription") long idPrescription){
@@ -67,11 +72,28 @@ public class PrescriptionController {
         return prescriptionService.getMedicinesByPrescriptionId(prescriptionId);
     }
 
-    @PostMapping("/generate_prescription/{id}")
-    public Prescription generatePrescription(@PathVariable Long id,@RequestBody List<String> symptoms ) {
 
-        return prescriptionService.generatePrescription(id, symptoms);
+    @GetMapping("/GetPrescriptionsByPatient/{patientId}")
+    public List<Prescription> getPrescriptionsByPatientId(@PathVariable Long patientId) {
+        return      prescriptionService.getPrescriptionsByPatientId(patientId);
     }
+
+    @GetMapping("/GetPrescriptionsByDoctor/{doctorId}")
+    public List<Prescription> getPrescriptionsByDoctorId(@PathVariable Long doctorId) {
+        return  prescriptionService.getPrescriptionsByDoctorId(doctorId);
+    }
+
+    //advanced functionality
+    @PostMapping("/generateprescription/")
+    public Prescription generatePrescription(@RequestBody Prescription prescription ) {
+
+        return prescriptionService.generatePrescription(prescription);
+    }
+    @GetMapping("/stat")
+    public List<Integer> calculatePrescriptionStatisticsForDoctor(Long doctorId) {
+        return  prescriptionService.calculatePrescriptionStatisticsForDoctor(doctorId);
+    }
+
 
 
 }

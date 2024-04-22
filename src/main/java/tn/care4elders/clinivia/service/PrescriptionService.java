@@ -18,7 +18,13 @@ public interface PrescriptionService {
 
     Prescription addMedicinesToPrescription(Long prescriptionId, List<Long> medicineIds);
      List<Medicine> getMedicinesByPrescriptionId(Long prescriptionId) ;
+    public List<Prescription> getAllUnapproved();
 
-    public Prescription generatePrescription(Long id, List<String> symptoms) ;
+    public Prescription generatePrescription(Prescription prescription) ;
+
+    List<Prescription> getPrescriptionsByPatientId(Long patientId);
+
+    List<Prescription> getPrescriptionsByDoctorId(Long doctorId);
+     List<Integer> calculatePrescriptionStatisticsForDoctor(Long doctorId) ;
 
     }
