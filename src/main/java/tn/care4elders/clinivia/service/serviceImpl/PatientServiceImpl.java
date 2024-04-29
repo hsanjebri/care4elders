@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.repository.PatientRepository;
 import tn.care4elders.clinivia.service.PatientService;
+import tn.care4elders.clinivia.entity.Task;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +50,17 @@ public class PatientServiceImpl implements PatientService {
 
     }
 
+    @Override
+    public double calculateTaskCompletionPercentage(long patientId) {
+        Patient patient = patientRepository.findById(patientId).orElse(null);
+        if (patient == null || patient.getTasks() == null || patient.getTasks().isEmpty()) {
+            return 0.0;
+        }
+
+        int totalTasks = patient.getTasks().size();
+        long completedTasks = patient.getTasks().stream().filter(Task::isDone).count();
+
+        return ((double) completedTasks / totalTasks) * 100.0;
+    }
 
 }
