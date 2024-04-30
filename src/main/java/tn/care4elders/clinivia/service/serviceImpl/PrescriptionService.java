@@ -126,7 +126,7 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
         List<String> suggestedMedications = analyzeData(medicalHistory, symptomsList);
 
 
-        prescription.setTitle("Generated Prescription");
+        prescription.setTitle("Generated Prescription "+ prescription.getId());
         prescription.setSymptoms(String.join(", ", symptomsList));
         prescription.setApproved(false);
         prescription.setPatient(patient);
@@ -216,6 +216,7 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
         return prescriptionRepo.findByDoctorId(doctorId);
     }
 
+    @Override
     public List<Integer> calculatePrescriptionStatisticsForDoctor(Long doctorId) {
         List<Integer> statistics = new ArrayList<>();
         int writtenPrescriptions = 0;
@@ -231,19 +232,20 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
                 approvedPrescriptions = approvedPrescriptions + 1;
             }
         }
-            // 3. Total number of prescriptions
-            int totalPrescriptions = this.getAllPrescriptions().size();
+        // 3. Total number of prescriptions
+        int totalPrescriptions = this.getAllPrescriptions().size();
 
-            // 4. Calculate the rest
-            int restPrescriptions = totalPrescriptions - (writtenPrescriptions + approvedPrescriptions);
+        // 4. Calculate the rest
+        int restPrescriptions = totalPrescriptions - (writtenPrescriptions + approvedPrescriptions);
 
-            statistics.add(writtenPrescriptions);
-            statistics.add(approvedPrescriptions);
-            statistics.add(restPrescriptions);
-            statistics.add(totalPrescriptions);
+        statistics.add(writtenPrescriptions);
+        statistics.add(approvedPrescriptions);
+        statistics.add(restPrescriptions);
 
-            return statistics;
-        }
+        return statistics;
+    }
+
+
 
     public List<Prescription> getAllUnapproved(){
         return (List<Prescription>) prescriptionRepo.findAllByApprovedFalse();

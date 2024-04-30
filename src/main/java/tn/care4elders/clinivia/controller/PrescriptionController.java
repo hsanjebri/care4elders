@@ -89,8 +89,8 @@ public class PrescriptionController {
 
         return prescriptionService.generatePrescription(prescription);
     }
-    @GetMapping("/stat")
-    public List<Integer> calculatePrescriptionStatisticsForDoctor(Long doctorId) {
+    @GetMapping("/stat/{doctorId}")
+    public List<Integer> calculatePrescriptionStatisticsForDoctor(@PathVariable Long doctorId) {
         return  prescriptionService.calculatePrescriptionStatisticsForDoctor(doctorId);
     }
 
