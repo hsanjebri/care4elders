@@ -12,4 +12,5 @@ public interface IserviceUser {
     void deleteUser(Long idUser);
     Optional<User> getUserById(Long idUser);
     List<User> getAllUsers();
+    boolean EmailUnique(String email);
 }

@@ -43,4 +43,9 @@ public class ServiceUserImpl implements IserviceUser {
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
     }
+
+    @Override
+    public boolean EmailUnique(String email) {
+        return userRepository.getAllByEmail(email) == null;
+    }
 }
