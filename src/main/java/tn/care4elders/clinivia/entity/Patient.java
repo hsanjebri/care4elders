@@ -1,5 +1,6 @@
 package tn.care4elders.clinivia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -58,15 +59,18 @@ public class Patient {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    @JsonIgnore
     private List<Prescription> prescriptions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    @JsonIgnore
     private List<DietPlan> dietPlans;
 
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<FeedBack> feedBacks;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Complaint> complaints;
 
@@ -81,7 +85,8 @@ public class Patient {
     private List<Appointment> appointmentList;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Task> tasks;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
