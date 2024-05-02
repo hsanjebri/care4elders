@@ -140,6 +140,7 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
 
 
 
+
     private List<String> analyzeData(String medicalHistory, List<String> symptoms) {
         Set<String> suggestedMedications = new HashSet<>();
 
