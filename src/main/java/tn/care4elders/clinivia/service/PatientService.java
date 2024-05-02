@@ -16,6 +16,7 @@ public interface PatientService {
     // Récupérer un patient par son ID
     Patient getPatientById(long id);
 
+
     // Supprimer un patient par son ID
     void deletePatient(long id);
 
@@ -27,4 +28,6 @@ public interface PatientService {
     double calculateTaskCompletionPercentage(long patientId);
 
 
+    //shadha
+    Patient getPatientByEmail(String address);
 }

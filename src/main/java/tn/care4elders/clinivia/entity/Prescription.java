@@ -1,5 +1,6 @@
 package tn.care4elders.clinivia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,22 +19,36 @@ import java.util.List;
 @Entity
 
 public class Prescription {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdPres;
-    private String medicamentList;
-    private String medInstruction;
-
+    private Long id;
+    private String title;
+    private String prescPhoto ;
+    private String diseases ;
+    private String EmailPatient ;
     @Temporal(TemporalType.DATE)
-    private Date medExpireDate;
+    private Date createdDate;
+    private String description ;
+    private Long doctor_id ;
+    private Long ppatient_id ;
+    private String symptoms;
+    //for the generator
+    private boolean approved ;
+    private String suggestedMedicines;
+    private String doctor_name ;
 
-
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     Patient patient;
+    @JsonIgnore
 
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
     private List<Medicine> medicines;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    User doctor;
+
 
 
 }

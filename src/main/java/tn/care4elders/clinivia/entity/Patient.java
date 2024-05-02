@@ -17,33 +17,26 @@ import java.util.List;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdPatient;
+    private long id;
 
     private String name;
-
-    private String patientPassword;
-
-    @Temporal(TemporalType.DATE)
-    private Date date;
-
-    private String address;
-
-    private String bGroupe ;
-
-    @Enumerated(EnumType.STRING)
-    private Gender Gender;
-
+    private String img;
     private String mobile;
 
-    private String patientContactEmergencies;
 
-    private String medicalHistory;
-
-    @Enumerated(EnumType.STRING)
-    private Alergie patientAlergies;
 
     private String treatment;
 
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    private String address;
+    private String bGroupe ;
+    @Enumerated(EnumType.STRING)
+    private Gender Gender;
+    private String patientContactEmergencies;
+    private String medicalHistory;
+    @Enumerated(EnumType.STRING)
+    private Alergie patientAlergies;
     private String image;
     private String email ;
 
@@ -55,7 +48,6 @@ public class Patient {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Payment> payments;
-
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
@@ -81,6 +73,7 @@ public class Patient {
     @OneToOne
     private Subscription subscription;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Appointment> appointmentList;
 
@@ -100,7 +93,6 @@ public class Patient {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Event> events;
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
      List<Iervice> iervices;
