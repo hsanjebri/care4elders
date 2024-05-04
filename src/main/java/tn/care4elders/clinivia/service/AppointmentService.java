@@ -1,19 +1,21 @@
 package tn.care4elders.clinivia.service;
 
-import tn.care4elders.clinivia.entity.Appointment;
+import tn.care4elders.clinivia.entity.Appointments;
 
 import java.util.List;
 
 public interface AppointmentService {
 
 
-    Appointment addAppointment(Appointment appointment);
+    Appointments addAppointment(Appointments appointments);
 
-    Appointment updateAppointment(Appointment appointment);
-    List<Appointment> getAllAppointments();
 
-    Appointment getAppointmentById(long IdAppointment);
+    Appointments updateAppointment(Appointments appointments);
+    List<Appointments> getAllAppointments();
 
-    void deleteAppointment(long IdAppointment);
+    Appointments getAppointmentById(long id);
 
+    void deleteAppointment(long id);
+
+    //List<Appointments> getAllAppointmentForDoctor(long id);
 }

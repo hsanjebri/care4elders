@@ -1,4 +1,4 @@
-package tn.care4elders.clinivia.service;
+package tn.care4elders.clinivia.service.serviceImpl;
 
 
 import lombok.AccessLevel;
@@ -7,11 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.care4elders.clinivia.entity.Appointment;
+import tn.care4elders.clinivia.entity.Appointments;
 import tn.care4elders.clinivia.repository.AppointmentRepo;
+import tn.care4elders.clinivia.service.AppointmentService;
 
 
 import java.util.List;
@@ -28,39 +28,43 @@ public class AppointmentServiceImpl implements AppointmentService {
     AppointmentRepo appointmentRepo;
 
     @Override
-    public Appointment addAppointment (Appointment appointment)
+    public Appointments addAppointment (Appointments appointments)
     {
-        return appointmentRepo.save(appointment);
+        return appointmentRepo.save(appointments);
     }
 
     @Override
-    public List<Appointment> getAllAppointments() {
+    public List<Appointments> getAllAppointments() {
 
-        return (List<Appointment>) appointmentRepo.findAll();
+        return (List<Appointments>) appointmentRepo.findAll();
     }
 
     @Override
-    public Appointment getAppointmentById(long idAppointment) {
+    public Appointments getAppointmentById(long id) {
 
 
-        return appointmentRepo.findById(idAppointment).orElse(null);
+        return appointmentRepo.findById(id).orElse(null);
     }
 
     @Override
-    public void deleteAppointment(long idAppointment)
+    public void deleteAppointment(long id)
     {
-        appointmentRepo.deleteById(idAppointment);
+        appointmentRepo.deleteById(id);
     }
 
 
     @Override
-    public Appointment updateAppointment(Appointment appointment)
+    public Appointments updateAppointment(Appointments appointments)
 
     {
-        return appointmentRepo.save(appointment);
+        return appointmentRepo.save(appointments);
     }
 
+    /*    @Override
+        public List<Appointments> getAllAppointmentForDoctor(long id) {
 
+            return (List<Appointments>) appointmentRepo.findby();
+        }*/
 
 
 }
