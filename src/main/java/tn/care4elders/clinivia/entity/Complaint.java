@@ -14,25 +14,17 @@ import java.util.Date;
 public class Complaint {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdComplaints;
-
+    private long Id;
+    private String mno;
+    private String mname;
+    private String category;
+    private String company;
     @Temporal(TemporalType.DATE)
-    private Date complaintDate;
-
-    private String complaintDescription;
-
-    private boolean status;
-
+    private Date pdate;
+    private String price;
     @Temporal(TemporalType.DATE)
-    private Date resolutionDate;
-    //with phone , email , or webapp
-    private ComplaintChannel complaintChannel;
-    //service to complain
-    @Enumerated(EnumType.STRING)
-    private ComplainedService service;
-
-
-    private String compTitle;
+    private Date edate;
+    private String stock;
 
 
     @ManyToOne
