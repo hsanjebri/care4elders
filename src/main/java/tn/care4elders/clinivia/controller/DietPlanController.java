@@ -5,15 +5,11 @@ import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.DietPlan;
 import tn.care4elders.clinivia.service.DietPlanService;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/dietplan")
 @AllArgsConstructor
-@CrossOrigin("*")
-
 public class DietPlanController {
 
     DietPlanService dietPlanService;
@@ -44,9 +40,4 @@ public class DietPlanController {
     public DietPlan updateDietPlan(@RequestBody DietPlan dietPlan) {
         return dietPlanService.updateDietPlan(dietPlan);
     }
-
-    @GetMapping("/assess/{patientId}")
-        public Map<Date, String> assessNutritionalIntake(@PathVariable Long patientId) {
-            return dietPlanService.assessNutritionalIntake(patientId);
-        }
 }

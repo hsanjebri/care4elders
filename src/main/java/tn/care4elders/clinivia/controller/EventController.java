@@ -28,7 +28,7 @@ public class EventController {
         return new ResponseEntity<>(addedEvent, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{IdEvent}")
     public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
         Event updatedEvent = eventService.updateEvent(event);
         return new ResponseEntity<>(updatedEvent, HttpStatus.OK);

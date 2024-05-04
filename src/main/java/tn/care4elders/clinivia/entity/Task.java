@@ -14,21 +14,19 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idTask;
+    private Long IdTask;
 
-    private String title;
+    private String taskTitle;
 
     @Temporal(TemporalType.DATE)
-    private Date due_date;
+    private Date taskStartDate;
 
     @Temporal(TemporalType.DATE)
     private Date taskEndDate;
 
-    private String note;
+    private String taskDescription;
 
-    private String priority;
-
-    private boolean done;
+    private boolean taskStatus;
 
     @ManyToOne
     @JoinColumn(name = "patient_id")

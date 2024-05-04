@@ -10,8 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/mealrecommendation")
 @AllArgsConstructor
-@CrossOrigin("*")
-
 public class MealRecommendationController {
     MealRecommendationService mealRecommendationService;
 
@@ -25,7 +23,7 @@ public class MealRecommendationController {
         return mealRecommendationService.getMealRecommendationById(id);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteMealRecommendation(@PathVariable("id") Long id) {
         mealRecommendationService.deleteMealRecommendation(id);
     }

@@ -24,15 +24,4 @@ public class MealRecommendation {
 
     private String Ingredients ;
 
-    private double calories;    
-    private double protein;
-    private double carbohydrates;
-    private double fat;
-    private double cholesterol;
-
-
-    @ManyToOne
-    @JoinColumn(name = "plan_id")
-    private DietPlan dietPlan;
-
 }

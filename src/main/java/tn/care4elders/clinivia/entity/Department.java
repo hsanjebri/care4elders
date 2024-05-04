@@ -19,21 +19,12 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-HEAD
     private String dNo;
     private String dName;
     private String description;
     @Temporal(TemporalType.DATE)
     private Date dDate;
     private String dHead;
-
-    private String d_No;
-    private String d_Name;
-    private String description;
-    @Temporal(TemporalType.DATE)
-    private Date d_Date;
-    private String d_Head;
-
     private String status;
 
     @OneToMany(cascade = CascadeType.ALL , mappedBy = "department")
