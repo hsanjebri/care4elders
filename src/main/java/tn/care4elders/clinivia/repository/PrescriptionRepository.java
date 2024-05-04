@@ -1,9 +1,9 @@
 package tn.care4elders.clinivia.repository;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import tn.care4elders.clinivia.entity.Prescription;
 
-@Repository
-public interface PrescriptionRepository extends CrudRepository <Prescription, Long>{
+public interface PrescriptionRepository extends JpaRepository<Prescription,Long> {
+
+
 }
