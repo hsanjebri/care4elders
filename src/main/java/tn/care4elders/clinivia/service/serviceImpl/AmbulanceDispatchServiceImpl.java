@@ -29,13 +29,13 @@ public class AmbulanceDispatchServiceImpl implements AmbulanceDispatchService {
     }
 
     @Override
-    public void deleteAmbulanceDispatch(long Id) {
-        ambulanceDispatchRepository.deleteById(Id);
+    public void deleteAmbulanceDispatch(long dispatchId) {
+        ambulanceDispatchRepository.deleteById(dispatchId);
     }
 
     @Override
-    public Optional<AmbulanceDispatch> getAmbulanceDispatchById(long Id) {
-        return ambulanceDispatchRepository.findById(Id);
+    public Optional<AmbulanceDispatch> getAmbulanceDispatchById(long dispatchId) {
+        return ambulanceDispatchRepository.findById(dispatchId);
     }
 
     @Override

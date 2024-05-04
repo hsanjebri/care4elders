@@ -28,7 +28,7 @@ public class FuneralController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/update/{IdPatient}")
     public ResponseEntity<Funeral> updateFuneral(@PathVariable Long IdPatient, @RequestBody Funeral funeral) {
         Funeral updatedFuneral = funeralService.updateFuneralForPatient(IdPatient, funeral);
         return updatedFuneral != null

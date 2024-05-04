@@ -8,9 +8,9 @@ public interface AmbulanceDispatchService {
 
     AmbulanceDispatch updateAmbulanceDispatch(AmbulanceDispatch ambulanceDispatch);
 
-    void deleteAmbulanceDispatch(long Id);
+    void deleteAmbulanceDispatch(long dispatchId);
 
-    Optional<AmbulanceDispatch> getAmbulanceDispatchById(long Id);
+    Optional<AmbulanceDispatch> getAmbulanceDispatchById(long dispatchId);
 
     List<AmbulanceDispatch> getAllAmbulanceDispatches();
 }

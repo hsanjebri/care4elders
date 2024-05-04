@@ -1,10 +1,7 @@
 package tn.care4elders.clinivia.entity;
 
 public enum Role {
-    Admin,
     DOCTOR,
-    Patient,
-    HealthcareStaff,
     NURSE,
     CAREGIVER,
     PHARMACIST,
