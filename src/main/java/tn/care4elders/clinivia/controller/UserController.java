@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.User;
 import tn.care4elders.clinivia.service.serviceImpl.ServiceUserImpl;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @RequestMapping("api/UserController")
 @Tag(name = "Gestion des Users",description = "les apis pour gérer tout les Users")
+@CrossOrigin("*")
 
 
 public class UserController {
@@ -38,11 +40,16 @@ public class UserController {
         serviceUser.deleteUser(idUser);
     }
     @GetMapping("/getUserById/{idUser}")
-    Optional<User> gettingUserById(@PathVariable("idUser") Long idUser){
+    public User gettingUserById(@PathVariable("idUser") Long idUser){
         return serviceUser.getUserById(idUser);
     }
     @GetMapping("/getAllUsers")
     List<User> gettingAllUsers(){
         return serviceUser.getAllUsers();
+    }
+    @GetMapping("/checkEmailUnique")
+    public ResponseEntity<Boolean> checkEmailUnique(@RequestParam String email) {
+        boolean isUnique = serviceUser.EmailUnique(email);
+        return ResponseEntity.ok(isUnique);
     }
 }
