@@ -32,15 +32,19 @@ public class ServiceUserImpl implements IserviceUser {
     }
 
     @Override
-    public Optional<User> getUserById(Long idUser) {
-        Optional<User> user = userRepository.findById(idUser);
-        if (user.isPresent())
-            return user;
-        return Optional.of(new User());
+    public User getUserById(Long idUser) {
+       return (User) userRepository.findById(idUser).get();
+
+
     }
 
     @Override
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
+    }
+
+    @Override
+    public boolean EmailUnique(String email) {
+        return userRepository.getAllByEmail(email) == null;
     }
 }

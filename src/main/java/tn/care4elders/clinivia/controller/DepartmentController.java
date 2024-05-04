@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 @RequestMapping("/department")
+HEAD
 
 @CrossOrigin("*")
 public class DepartmentController {

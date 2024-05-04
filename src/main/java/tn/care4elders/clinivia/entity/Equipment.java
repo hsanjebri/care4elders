@@ -14,18 +14,19 @@ public class Equipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdEquipment;
+    private Long id;
 
-    private String itemName;
+    private String i_name;
     private String category;
-    private int quantity;
+
+    private int qty;
 
     @Temporal(TemporalType.DATE)
-    private Date purchaseDate;
+    private Date date;
 
     private float price;
 
-    private String detail;
+    private String details;
 
 
     @ManyToOne

@@ -1,5 +1,6 @@
 package tn.care4elders.clinivia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,32 +17,29 @@ import java.util.List;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long IdPatient;
+    private long id;
 
     private String name;
+    private String img;
+    private String mobile;
 
-    private String patientPassword;
+
+
+    private String treatment;
 
     @Temporal(TemporalType.DATE)
     private Date date;
-
     private String address;
-
-    private String bGroup;
-
+    private String bGroupe ;
     @Enumerated(EnumType.STRING)
     private Gender Gender;
-
-    private String mobile;
-
     private String patientContactEmergencies;
-
-    private String MedicalHistroy;
-
+    private String medicalHistory;
     @Enumerated(EnumType.STRING)
     private Alergie patientAlergies;
+    private String image;
+    private String email ;
 
-    private String treatment;
 
 
     @OneToOne
@@ -52,17 +50,19 @@ public class Patient {
     private List<Payment> payments;
 
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    @JsonIgnore
     private List<Prescription> prescriptions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    @JsonIgnore
     private List<DietPlan> dietPlans;
 
-
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<FeedBack> feedBacks;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Complaint> complaints;
 
@@ -73,11 +73,13 @@ public class Patient {
     @OneToOne
     private Subscription subscription;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Appointment> appointmentList;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Task> tasks;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
@@ -91,7 +93,6 @@ public class Patient {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Event> events;
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
      List<Iervice> iervices;
