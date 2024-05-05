@@ -16,7 +16,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("iad")
+    @JsonProperty("id")
     private long IdUser;
 
     @JsonProperty("name")
@@ -86,8 +86,8 @@ public class User {
     private List<Iervice> services;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
-    private List<Notification> notifications;
+   @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
+   private List<Notification> notifications;
 
 
     @OneToOne
@@ -103,4 +103,9 @@ public class User {
     private List<VitalSign> vitalSignList ;
 
 
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="doctor")
+    private List<Prescription> prescriptions;
+
 }
+
