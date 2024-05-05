@@ -9,7 +9,7 @@ import tn.care4elders.clinivia.entity.Equipment;
 import tn.care4elders.clinivia.repository.EquipmentRepository;
 
 
-import java.util.*;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -39,7 +39,6 @@ public class EquipmentService implements tn.care4elders.clinivia.service.Equipme
     public Equipment updateEquipment(Equipment equipment) {
         return (Equipment) equipmentRepo.save(equipment);
     }
-
 
 
 }
