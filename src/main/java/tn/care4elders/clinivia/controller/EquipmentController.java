@@ -13,39 +13,42 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @Slf4j
+@CrossOrigin("*")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@RequestMapping("api/Equipments")
+@RequestMapping("Equipments")
 
 public class EquipmentController {
     EquipmentService equipmentService ;
 
     // Order 1
-    @PostMapping("add")
+    @PostMapping("/add")
     public Equipment addingEquipment(@RequestBody Equipment equipment){
         return equipmentService.addEquipment(equipment);
     }
 
     // Order 2
-    @GetMapping("getAll")
+    @GetMapping("/getAll")
     public List<Equipment> gettingAllEquipments(){
         return equipmentService.getAllEquipments();
     }
 
     // Order 3
-    @GetMapping("get")
+    @GetMapping("/get")
     public Equipment gettingEquipment(@RequestParam("idEquipment") long idEquipment){
         return equipmentService.getEquipmentById(idEquipment);
     }
 
     // Order 4
-    @DeleteMapping("delete/{idEquipment}")
+    @DeleteMapping("/delete/{idEquipment}")
     public void deletingEquipment(@PathVariable("idEquipment") long idEquipment){
         equipmentService.deleteEquipment(idEquipment);
     }
 
     // Order 5
-    @PutMapping("update")
+    @PutMapping("/update")
     public Equipment updatingEquipment(@RequestBody Equipment equipment){
         return equipmentService.updateEquipment(equipment);
     }
+
+
 }
