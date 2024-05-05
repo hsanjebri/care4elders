@@ -103,6 +103,7 @@ public class User {
     private List<VitalSign> vitalSignList ;
 
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="doctor")
     private List<Prescription> prescriptions;
 

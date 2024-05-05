@@ -21,6 +21,20 @@ public class Patient {
 
     private String name;
     private String img;
+
+    private String patientPassword;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    private String address;
+
+    private String bGroupe ;
+
+    @Enumerated(EnumType.STRING)
+    private Gender Gender;
+
+
     private String mobile;
 
 
