@@ -1,5 +1,6 @@
 package tn.care4elders.clinivia.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,14 +16,18 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     private long IdUser;
 
+    @JsonProperty("name")
     private String Name;
 
     private String Password;
 
-    private String Email;
 
+    private String email;
+
+    @JsonProperty("date")
     private Date BirthDay;
 
     private String Address;
@@ -33,17 +38,24 @@ public class User {
 
     private String country;
 
+    private String img;
+
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @JsonProperty("mobile")
     private String Phone;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonProperty("degree")
     private String LicenceDetails;
 
+    @JsonProperty("specialization")
     private String MedicalSpecialities;
+
+    private String department;
 
     private String EducationalBackground;
 
@@ -52,6 +64,8 @@ public class User {
     private String EmergencyContact;
 
     private String AvailabilityShift;
+
+    private String designation;
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
@@ -88,5 +102,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="user")
     private List<VitalSign> vitalSignList ;
 
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="doctor")
+    private List<Prescription> prescriptions;
 
 }
