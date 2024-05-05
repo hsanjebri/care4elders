@@ -108,4 +108,3 @@ public class User {
     private List<Prescription> prescriptions;
 
 }
-
