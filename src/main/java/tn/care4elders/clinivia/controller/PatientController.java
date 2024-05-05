@@ -43,7 +43,6 @@ public class PatientController {
         return patientService.getPatientById(id);
     }
 
-
     @DeleteMapping("/delete/{id}")
     public void deletePatient(@PathVariable("id") long id) {
         patientService.deletePatient(id);
@@ -65,11 +64,4 @@ public class PatientController {
         public double getTaskCompletionPercentage(@PathVariable("patientId") long patientId) {
             return patientService.calculateTaskCompletionPercentage(patientId);
         }
-    //shadha
-
-    @GetMapping("/getPatientByAdresse/{address}")
-    public Patient getPatientByAddress(@PathVariable("address") String address) { return patientService.getPatientByEmail(address);
-
-
-    }
 }
