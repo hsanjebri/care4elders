@@ -9,8 +9,8 @@ import java.util.List;
 public interface ComplaintService {
       Complaint saveComplaint(Complaint complaint);
 
-     Complaint getComplaintById(long IdComplaints);
-    void deleteComplaint(long IdComplaints);
+     Complaint getComplaintById(long id);
+    void deleteComplaint(long id);
     List<Complaint> getAllComplaints();
 
     Complaint updateComplaint(Complaint complaint);

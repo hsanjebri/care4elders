@@ -1,6 +1,7 @@
 package tn.care4elders.clinivia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,11 +18,11 @@ import java.util.List;
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long IdPatient;
 
     private String name;
     private String img;
-
+    @JsonProperty("password")
     private String patientPassword;
 
     @Temporal(TemporalType.DATE)
@@ -41,12 +42,7 @@ public class Patient {
 
     private String treatment;
 
-    @Temporal(TemporalType.DATE)
-    private Date date;
-    private String address;
-    private String bGroupe ;
-    @Enumerated(EnumType.STRING)
-    private Gender Gender;
+
     private String patientContactEmergencies;
     private String medicalHistory;
     @Enumerated(EnumType.STRING)
