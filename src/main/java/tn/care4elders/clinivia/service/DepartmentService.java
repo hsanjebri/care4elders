@@ -8,8 +8,8 @@ import java.util.List;
 @Service
 public interface DepartmentService {
     Department saveDepartment(Department department);
-    Department getDepartmentById(long Id);
-    void deleteDepartment(long Id);
+    Department getDepartmentById(long id);
+    void deleteDepartment(long id);
     List<Department> getAllDepartments();
     Department updateDepartment(Department department);
 }

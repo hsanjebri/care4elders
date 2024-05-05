@@ -19,6 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 @RequestMapping("/complaint")
+@CrossOrigin("*")
 
 public class ComplaintController {
 
