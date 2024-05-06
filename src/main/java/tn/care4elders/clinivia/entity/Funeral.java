@@ -16,6 +16,8 @@ public class Funeral {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdFuneral;
 
+    private String IdPatient;
+
     private String funeralServiceProvider;
 
 
@@ -25,7 +27,7 @@ public class Funeral {
 
     private String contactPersonPhoneNumber;
 
-    private Double estimatedFuneralExpenses;
+    private String estimatedFuneralExpenses;
 
 
     @OneToOne(mappedBy="funeral")

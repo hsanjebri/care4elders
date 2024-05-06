@@ -1,6 +1,8 @@
 package tn.care4elders.clinivia.controller;
 
 import lombok.AllArgsConstructor;
+import tn.care4elders.clinivia.entity.Ambulance;
+import tn.care4elders.clinivia.entity.AmbulanceDispatch;
 import tn.care4elders.clinivia.repository.FuneralRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/funerals")
+@CrossOrigin("*")
 public class FuneralController {
     FuneralService funeralService;
     @Autowired
@@ -20,31 +23,26 @@ public class FuneralController {
         this.funeralService = funeralService;
     }
 
-    @PostMapping("/add/{IdPatient}")
-    public ResponseEntity<Funeral> addFuneral(@PathVariable Long IdPatient, @RequestBody Funeral funeral) {
-        Funeral addedFuneral = funeralService.addFuneralForPatient(IdPatient, funeral);
-        return addedFuneral != null
-                ? new ResponseEntity<>(addedFuneral, HttpStatus.CREATED)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PostMapping("/add")
+    public ResponseEntity<Funeral> addFuneral(@RequestBody Funeral funeral) {
+        Funeral addedFuneral = funeralService.addFuneral(funeral);
+        return new ResponseEntity<>(addedFuneral, HttpStatus.CREATED);
     }
-
     @PutMapping("/update")
-    public ResponseEntity<Funeral> updateFuneral(@PathVariable Long IdPatient, @RequestBody Funeral funeral) {
-        Funeral updatedFuneral = funeralService.updateFuneralForPatient(IdPatient, funeral);
-        return updatedFuneral != null
-                ? new ResponseEntity<>(updatedFuneral, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Funeral> updateFuneral(@RequestBody Funeral funeral){
+        Funeral updatedFuneral = funeralService.updateFuneral(funeral);
+        return new ResponseEntity<>(updatedFuneral,HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{IdPatient}")
-    public ResponseEntity<Void> deleteFuneral(@PathVariable Long IdPatient) {
-        funeralService.deleteFuneralForPatient(IdPatient);
+    @DeleteMapping("/delete/{IdFuneral}")
+    public ResponseEntity<Void> deleteFuneralById(@PathVariable long IdFuneral){
+        funeralService.deleteFuneralById(IdFuneral);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/get/{IdPatient}")
-    public ResponseEntity<Funeral> getFuneral(@PathVariable Long IdPatient) {
-        Optional<Funeral> funeral = funeralService.getFuneralForPatient(IdPatient);
+    public ResponseEntity<Funeral> getFuneralById(@PathVariable long IdFuneral){
+        Optional<Funeral> funeral = funeralService.getFuneralById(IdFuneral);
         return funeral.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
