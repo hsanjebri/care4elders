@@ -19,12 +19,12 @@ public class Ambulance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
-    private String vehicule_no;
-    private String vehicule_name;
+    private String vehicle_no;
+    private String vehicle_name;
     private String year_made;
     private String driver_name;
     private String driver_license_no;
     private String driver_no;
-    private String vehicule_type;
+    private String vehicle_type;
     private String note;
 }

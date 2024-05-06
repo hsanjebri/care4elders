@@ -20,7 +20,7 @@ public class AmbulanceDispatch {
         private String patient_name;
         private String gender;
         private String date;
-        private String vehicule_no;
+        private String vehicle_no;
         private String driver_name;
         private String driver_no;
         private String patient_address;

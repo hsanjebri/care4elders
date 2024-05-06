@@ -21,7 +21,7 @@ public class Funeral {
     private String funeralServiceProvider;
 
 
-    private String contactPersonForArrangements;
+    private String contactPersonForArrangement;
 
     private String contactPersonRelationshipToPatient;
 

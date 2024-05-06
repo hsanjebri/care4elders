@@ -12,7 +12,8 @@ import tn.care4elders.clinivia.entity.AmbulanceDispatch;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping("/ambulancedispatch")
+@RequestMapping("/api/Ambulancedispatch")
+@CrossOrigin("*")
 public class AmbulanceDispatchController {
      AmbulanceDispatchService ambulanceDispatchService;
 
@@ -46,7 +47,7 @@ public class AmbulanceDispatchController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public ResponseEntity<List<AmbulanceDispatch>> getAllAmbulanceDispatches() {
         List<AmbulanceDispatch> dispatches = ambulanceDispatchService.getAllAmbulanceDispatches();
         return new ResponseEntity<>(dispatches, HttpStatus.OK);

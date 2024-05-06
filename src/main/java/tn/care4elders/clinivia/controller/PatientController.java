@@ -33,7 +33,7 @@ public class PatientController {
 
         // Send SMS to the specified number
         String toPhoneNumber = "+21623671593"; // Update with your recipient's phone number
-        smsService.sendSMS(toPhoneNumber, message);
+        //smsService.sendSMS(toPhoneNumber, message);
 
         return savedPatient;
     }
