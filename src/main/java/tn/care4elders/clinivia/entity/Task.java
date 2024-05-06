@@ -1,4 +1,5 @@
 package tn.care4elders.clinivia.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,10 +32,12 @@ public class Task {
     private boolean done;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
     @ManyToOne
+    @JsonIgnore 
     @JoinColumn(name = "user_id")
     private User user;
 

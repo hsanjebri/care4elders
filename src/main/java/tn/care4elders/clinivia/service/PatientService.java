@@ -26,6 +26,7 @@ public interface PatientService {
 
     public Patient updatePatient( Patient patient);
     double calculateTaskCompletionPercentage(long patientId);
+    public void displayRarestBloodTypeDistribution() ;
 
 
     //shadha
