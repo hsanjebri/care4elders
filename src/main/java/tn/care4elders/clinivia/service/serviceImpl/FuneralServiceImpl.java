@@ -2,9 +2,9 @@ package tn.care4elders.clinivia.service.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.repository.FuneralRepository;
 import tn.care4elders.clinivia.repository.PatientRepository;
-import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.entity.Funeral;
 import tn.care4elders.clinivia.service.FuneralService;
 
@@ -21,45 +21,40 @@ public class FuneralServiceImpl implements FuneralService {
         this.funeralRepository = funeralRepository;
         this.patientRepository = patientRepository;
     }
+    public class PatientNotFoundException extends RuntimeException {
 
+        public PatientNotFoundException(String message) {
+            super(message);
+        }
+    }
     @Override
-    public Funeral addFuneralForPatient(Long IdPatient, Funeral funeral) {
-        Optional<Patient> patientOptional = patientRepository.findById(IdPatient);
-
+    public Funeral addFuneral( Funeral funeral) {
+        Optional<Patient> patientOptional = patientRepository.findById(Long.valueOf(funeral.getIdPatient()));
         if (patientOptional.isPresent()) {
-            Patient patient = patientOptional.get();
-            funeral.setPatient(patient);
+            // Patient exists, save the funeral
             return funeralRepository.save(funeral);
         } else {
-            // Handle patient not found, for example, by returning null or throwing another exception
-            return null;
+            // Patient doesn't exist, throw an exception or return an error message
+            throw new PatientNotFoundException("Patient with IdPatient: " + funeral.getIdPatient() + " not found");
         }
     }
 
-    @Override
-    public Funeral updateFuneralForPatient(Long IdPatient, Funeral funeral) {
-        Optional<Funeral> existingFuneral = funeralRepository.findById(IdPatient);
 
-        if (existingFuneral.isPresent()) {
-            funeral.setId(existingFuneral.get().getId());
-            funeral.setPatient(existingFuneral.get().getPatient());
+    @Override
+    public Funeral updateFuneral( Funeral funeral) {
+
             return funeralRepository.save(funeral);
-        } else {
-            // Handle funeral not found, for example, by returning null or throwing another exception
-            return null;
-        }
     }
 
     @Override
-    public void deleteFuneralForPatient(Long IdPatient) {
-        Optional<Funeral> existingFuneral = funeralRepository.findById(IdPatient);
-
-        existingFuneral.ifPresent(funeralRepository::delete);
+    public void deleteFuneralById(Long IdFuneral) {
+        funeralRepository.deleteById(IdFuneral);
     }
 
     @Override
-    public Optional<Funeral> getFuneralForPatient(Long IdPatient) {
-        return funeralRepository.findById(IdPatient);
+    public Optional<Funeral> getFuneralById(long IdFuneral){
+
+        return funeralRepository.findById(IdFuneral);
     }
 
     @Override

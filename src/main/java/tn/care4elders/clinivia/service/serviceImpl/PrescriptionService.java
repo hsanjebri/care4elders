@@ -65,6 +65,7 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
     }
 
     @Override
+
     public Prescription updatePrescription( Prescription prescription) {
         prescription.setPatient(patientS.getPatientByEmail(prescription.getEmailPatient()));
         prescription.setDoctor(userS.getUserById(prescription.getDoctor_id()));
@@ -122,11 +123,13 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
 // Remove formatting characters and split the string
         List<String> symptomsList =extractWords(symptoms);
 
-        String medicalHistory = patient.getMedicalHistory();
+        String Alldiseases =getAllPatientDiseases(patient.getIdPatient());
+
+        String medicalHistory = patient.getMedicalHistory().concat(Alldiseases);
         List<String> suggestedMedications = analyzeData(medicalHistory, symptomsList);
 
 
-        prescription.setTitle("Generated Prescription "+ prescription.getId());
+        prescription.setTitle("Generated Prescription ");
         prescription.setSymptoms(String.join(", ", symptomsList));
         prescription.setApproved(false);
         prescription.setPatient(patient);
@@ -150,6 +153,7 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
             for (String symptom : symptoms) {
                 if (symptom.equalsIgnoreCase("headache")) {
                     suggestedMedications.add("Acetaminophen (e.g., Tylenol)");
+
                 }
                 if (symptom.equalsIgnoreCase("stomach ache")) {
                     suggestedMedications.add("Antacid (e.g., Tums)");
@@ -189,6 +193,26 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
             }
         }
 
+
+        // Handle additional symptoms
+        for (String symptom : symptoms) {
+            if (symptom.equalsIgnoreCase("fever")) {
+                suggestedMedications.add("Antipyretics (e.g., Ibuprofen)");
+            }
+            if (symptom.equalsIgnoreCase("cough")) {
+                suggestedMedications.add("Cough syrup (e.g., Dextromethorphan)");
+            }
+            if (symptom.equalsIgnoreCase("weightloss")) {
+                suggestedMedications.add("Nutritional supplements");
+            }
+            if (symptom.equalsIgnoreCase("stomachache")) {
+                suggestedMedications.add("Antispasmodic (e.g., Buscopan)");
+            }
+            if (symptom.equalsIgnoreCase("headache")) {
+                suggestedMedications.add("Acetaminophen (e.g., Tylenol)");
+            }
+        }
+
         // If there's no relevant medical history, suggest medications based on symptoms only
         if (medicalHistory == null) {
             for (String symptom : symptoms) {
@@ -202,9 +226,20 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
                 }
             }
         }
-            List<String> suggestedMedicationsSet = new ArrayList<>(suggestedMedications);
 
-        return suggestedMedicationsSet;
+
+        List<String> suggestedMedicationsList = new ArrayList<>(suggestedMedications);
+        return suggestedMedicationsList;
+    }
+    public String getAllPatientDiseases(Long id ){
+        Set<String> Diseases = new HashSet<>();
+        List<Prescription> prescriptions = getPrescriptionsByPatientId(id);
+        for (Prescription pres : prescriptions) {
+            Diseases.add(pres.getDiseases());
+
+        }
+
+        return Diseases.toString();
     }
 
     @Override
@@ -255,3 +290,4 @@ prescription.setDoctor_name(userS.getUserById(prescription.getDoctor_id()).getNa
     }
 
     }
+
