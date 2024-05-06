@@ -21,9 +21,7 @@ public class Patient {
     private long IdPatient;
 
     private String name;
-    private String img;
-    @JsonProperty("password")
-    private String patientPassword;
+
 
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -41,12 +39,19 @@ public class Patient {
 
 
     private String treatment;
+    @JsonProperty("password")
+    private String patientPassword;
+
 
 
     private String patientContactEmergencies;
+
     private String medicalHistory;
+
     @Enumerated(EnumType.STRING)
     private Alergie patientAlergies;
+
+
     private String image;
     private String email ;
 
@@ -58,6 +63,7 @@ public class Patient {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Payment> payments;
+
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
@@ -83,7 +89,6 @@ public class Patient {
     @OneToOne
     private Subscription subscription;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
     private List<Appointment> appointmentList;
 
@@ -103,6 +108,7 @@ public class Patient {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Event> events;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="patient")
      List<Iervice> iervices;
