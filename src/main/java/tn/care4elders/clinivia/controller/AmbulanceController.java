@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/ambulance")
+@RequestMapping("/api/Ambulances")
+@CrossOrigin("*")
 
 public class AmbulanceController {
     AmbulanceService ambulanceService;
@@ -42,7 +43,7 @@ public class AmbulanceController {
          return ambulance.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                  .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
      }
-    @GetMapping("/getall")
+    @GetMapping("/getAll")
     public ResponseEntity<List<Ambulance>> getAllAmbulances() {
         List<Ambulance> ambulances = ambulanceService.getAllAmbulances();
         return new ResponseEntity<>(ambulances, HttpStatus.OK);

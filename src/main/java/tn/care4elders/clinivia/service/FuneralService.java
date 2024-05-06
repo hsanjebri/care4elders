@@ -1,20 +1,19 @@
 package tn.care4elders.clinivia.service;
-import org.springframework.stereotype.Service;
+import tn.care4elders.clinivia.entity.Ambulance;
 import tn.care4elders.clinivia.entity.Funeral;
 import java.util.Optional;
 import java.util.List;
 
 
-@Service
 public interface FuneralService {
 
-    Funeral addFuneralForPatient(Long IdPatient, Funeral funeral);
+    Funeral addFuneral(Funeral funeral);
 
-    Funeral updateFuneralForPatient(Long IdPatient, Funeral funeral);
+    Funeral updateFuneral(Funeral funeral);
 
-    void deleteFuneralForPatient(Long IdPatient);
+    void deleteFuneralById(Long IdFuneral);
 
-    Optional<Funeral> getFuneralForPatient(Long IdPatient);
+    Optional<Funeral> getFuneralById(long IdFuneral);
 
     List<Funeral> getAllFunerals();
 }

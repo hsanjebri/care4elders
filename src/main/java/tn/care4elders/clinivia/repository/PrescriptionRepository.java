@@ -12,7 +12,8 @@ import java.util.List;
 public interface PrescriptionRepository extends CrudRepository <Prescription, Long>{
 
 
-    @Query("SELECT p FROM Prescription p WHERE p.patient.id = :patientId")
+
+    @Query("SELECT p FROM Prescription p WHERE p.patient.IdPatient = :patientId and p.approved = true ")
     List<Prescription> findByPatientId(@Param("patientId") Long patientId);
     @Query("SELECT p FROM Prescription p WHERE p.doctor.IdUser = :doctorId")
     List<Prescription> findByDoctorId(@Param("doctorId") Long doctorId);
