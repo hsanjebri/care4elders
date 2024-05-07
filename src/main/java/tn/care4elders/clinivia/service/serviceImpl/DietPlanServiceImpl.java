@@ -43,12 +43,12 @@ public class DietPlanServiceImpl implements DietPlanService  {
 
 
 
-    public Map<Date, String> assessNutritionalIntake(Long patientId) {
+    public Map<Date, Map<String, Object>> assessNutritionalIntake(Long patientId) {
         // Retrieve the diet plans associated with the patient
         List<DietPlan> dietPlans = dietPlanRepository.findByPatientId(patientId);
 
         Map<Date, Map<String, Double>> dailyNutrients = new HashMap<>();
-        Map<Date, String> assessmentResults = new HashMap<>();
+        Map<Date, Map<String, Object>> assessmentResults = new HashMap<>();
 
         // Iterate through each diet plan of the patient
         for (DietPlan dietPlan : dietPlans) {
@@ -73,7 +73,7 @@ public class DietPlanServiceImpl implements DietPlanService  {
             }
         }
 
-        // Generate assessment results for each date
+        // Generate assessment results and meal predictions for each date
         for (Map.Entry<Date, Map<String, Double>> entry : dailyNutrients.entrySet()) {
             Date date = entry.getKey();
             Map<String, Double> totals = entry.getValue();
@@ -91,10 +91,88 @@ public class DietPlanServiceImpl implements DietPlanService  {
                 }
             });
 
-            assessmentResults.put(date, sb.toString());
+            Map<String, Object> result = new HashMap<>();
+            result.put("NutritionalAssessment", sb.toString());
+            result.put("MealRecommendations", generateMealRecommendations(totals));
+
+            assessmentResults.put(date, result);
         }
 
         return assessmentResults;
+    }
+
+    private List<String> generateMealRecommendations(Map<String, Double> totals) {
+        List<String> recommendations = new ArrayList<>();
+
+        if (isNutritionalIntakeBelowThreshold(totals)) {
+            recommendations.addAll(predictMeals(totals));
+        } else {
+            recommendations.addAll(generateMealsForExcess(totals));
+        }
+
+        return recommendations;
+    }
+
+    private boolean isNutritionalIntakeBelowThreshold(Map<String, Double> totals) {
+        return totals.get("Calories") < getAverageValue("Calories") ||
+                totals.get("Protein") < getAverageValue("Protein") ||
+                totals.get("Carbohydrates") < getAverageValue("Carbohydrates") ||
+                totals.get("Fat") < getAverageValue("Fat") ||
+                totals.get("Cholesterol") < getAverageValue("Cholesterol");
+    }
+
+    private List<String> generateMealsForExcess(Map<String, Double> totals) {
+        List<String> recommendations = new ArrayList<>();
+
+        if (totals.get("Calories") > getAverageValue("Calories")) {
+            recommendations.add("Consider lighter meal options to reduce calorie intake, such as salads or vegetable soups.");
+            recommendations.add("Focus on portion control and avoid high-calorie snacks to manage excess calorie intake.");
+        }
+        if (totals.get("Protein") > getAverageValue("Protein")) {
+            recommendations.add("Maintain a balanced protein intake by incorporating more plant-based proteins like beans and lentils.");
+            recommendations.add("Opt for lean protein sources and limit intake of high-fat meats to manage excess protein intake.");
+        }
+        if (totals.get("Carbohydrates") > getAverageValue("Carbohydrates")) {
+            recommendations.add("Choose complex carbohydrates over simple sugars to regulate blood sugar levels.");
+            recommendations.add("Balance carbohydrate intake with fiber-rich foods like vegetables and whole grains.");
+        }
+        if (totals.get("Fat") > getAverageValue("Fat")) {
+            recommendations.add("Reduce consumption of high-fat foods like fried items and processed snacks to manage excess fat intake.");
+            recommendations.add("Focus on heart-healthy fats from sources like nuts, seeds, and avocados.");
+        }
+        if (totals.get("Cholesterol") > getAverageValue("Cholesterol")) {
+            recommendations.add("Limit intake of high-cholesterol foods like fatty meats and full-fat dairy products to manage excess cholesterol intake.");
+            recommendations.add("Incorporate foods known to help lower cholesterol levels, such as oats, barley, and foods rich in soluble fiber.");
+        }
+
+        return recommendations;
+    }
+
+    private List<String> predictMeals(Map<String, Double> totals) {
+        List<String> predictions = new ArrayList<>();
+
+        if (totals.get("Calories") < getAverageValue("Calories")) {
+            predictions.add("Consider having a high-calorie meal such as pasta with creamy sauce.");
+            predictions.add("Try a hearty meal like beef stew with potatoes and vegetables.");
+        }
+        if (totals.get("Protein") < getAverageValue("Protein")) {
+            predictions.add("Include protein-rich foods like grilled chicken or tofu in your meals.");
+            predictions.add("Opt for meals containing lean meats such as turkey or fish.");
+        }
+        if (totals.get("Carbohydrates") < getAverageValue("Carbohydrates")) {
+            predictions.add("Incorporate complex carbohydrates like brown rice or quinoa into your meals.");
+            predictions.add("Try dishes made with whole wheat pasta or sweet potatoes.");
+        }
+        if (totals.get("Fat") < getAverageValue("Fat")) {
+            predictions.add("Add healthy fats to your meals with avocado or olive oil.");
+            predictions.add("Include nuts and seeds in your snacks for a source of healthy fats.");
+        }
+        if (totals.get("Cholesterol") < getAverageValue("Cholesterol")) {
+            predictions.add("Opt for meals with ingredients known to help lower cholesterol, such as oats and legumes.");
+            predictions.add("Include fatty fish like salmon or mackerel in your diet for heart-healthy omega-3 fatty acids.");
+        }
+
+        return predictions;
     }
 
     private double getAverageValue(String nutrient) {
@@ -113,5 +191,6 @@ public class DietPlanServiceImpl implements DietPlanService  {
                 return 0.0; // Default value
         }
     }
+
 
 }

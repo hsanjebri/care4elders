@@ -40,5 +40,15 @@ public class TaskController {
     public Task updateTask(@RequestBody Task task) {
         return taskService.updateTask(task);
     }
+
+
+    @GetMapping("/by-patient/{patientId}")
+    public List<Task> findTasksByPatientId(@PathVariable("patientId") Long patientId) {
+        return taskService.findTasksByPatientId(patientId);
+    }
+
+
+
+
 }
 //////////////////test

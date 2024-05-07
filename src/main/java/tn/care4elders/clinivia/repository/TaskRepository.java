@@ -15,4 +15,7 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
 
     @Query("SELECT t FROM Task t WHERE t.due_date BETWEEN :startDate AND :endDate AND t.done = false")
     List<Task> findByDueDateBetweenAndDoneFalse(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+    // New query to find tasks by patient ID
+    @Query("SELECT t FROM Task t WHERE t.patient.IdPatient = :patientId")
+    List<Task> findTasksByPatientId(@Param("patientId") long patientId);
 }

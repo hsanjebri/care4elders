@@ -1,6 +1,8 @@
 package tn.care4elders.clinivia.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.care4elders.clinivia.entity.DietPlan;
 import tn.care4elders.clinivia.service.DietPlanService;
@@ -17,7 +19,6 @@ import java.util.Map;
 public class DietPlanController {
 
     DietPlanService dietPlanService;
-
 
 
     @PostMapping("/add")
@@ -46,7 +47,11 @@ public class DietPlanController {
     }
 
     @GetMapping("/assess/{patientId}")
-        public Map<Date, String> assessNutritionalIntake(@PathVariable Long patientId) {
-            return dietPlanService.assessNutritionalIntake(patientId);
+    public ResponseEntity<Map<Date, Map<String, Object>>> assessNutritionalIntake(@PathVariable Long patientId) {
+        Map<Date, Map<String, Object>> assessmentResults = dietPlanService.assessNutritionalIntake(patientId);
+        if (assessmentResults.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(assessmentResults, HttpStatus.OK);
+    }
 }
