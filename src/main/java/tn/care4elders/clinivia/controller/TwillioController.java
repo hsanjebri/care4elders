@@ -1,10 +1,11 @@
 package tn.care4elders.clinivia.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.care4elders.clinivia.service.TwillioService;
-
+@CrossOrigin("*")
 @RestController("/call")
 public class TwillioController {
     @Autowired

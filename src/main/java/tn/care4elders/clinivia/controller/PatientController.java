@@ -72,4 +72,11 @@ public class PatientController {
 
 
     }
+
+
+    @GetMapping("/rarest-blood-type-distribution")
+    public void displayRarestBloodTypeDistribution() {
+        patientService.displayRarestBloodTypeDistribution();
+    }
+
 }

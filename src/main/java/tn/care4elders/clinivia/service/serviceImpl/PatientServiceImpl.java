@@ -8,8 +8,9 @@ import tn.care4elders.clinivia.repository.PatientRepository;
 import tn.care4elders.clinivia.service.PatientService;
 import tn.care4elders.clinivia.entity.Task;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -67,5 +68,24 @@ public Patient getPatientByEmail(String email) {
     return patientRepository.findByEmail(email);
 }
 
+
+
+    public void displayRarestBloodTypeDistribution() {
+        List<Patient> patients = patientRepository.findAll();
+
+        // Define the top 3 rarest blood types
+        List<String> rarestBloodTypes = Arrays.asList("AB-", "B-", "AB+");
+
+        Map<String, Long> bloodTypeCounts = patients.stream()
+                .map(Patient::getBGroupe)
+                .filter(Objects::nonNull)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        // Display the count for each of the top 3 rarest blood types
+        System.out.println("Rarest Blood Type Distribution among Top 3 Rarest Blood Types:");
+        for (String bloodType : rarestBloodTypes) {
+            System.out.println(bloodType + ": " + bloodTypeCounts.getOrDefault(bloodType, 0L));
+        }
+    }
 
 }
