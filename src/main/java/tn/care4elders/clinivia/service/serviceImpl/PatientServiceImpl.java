@@ -3,6 +3,7 @@ package tn.care4elders.clinivia.service.serviceImpl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.care4elders.clinivia.entity.Alergie;
 import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.repository.PatientRepository;
 import tn.care4elders.clinivia.service.PatientService;
@@ -87,5 +88,16 @@ public Patient getPatientByEmail(String email) {
             System.out.println(bloodType + ": " + bloodTypeCounts.getOrDefault(bloodType, 0L));
         }
     }
+    public Map<Alergie, Integer> countCommonPatientAllergies(List<Patient> patients) {
+        Map<Alergie, Integer> allergyCounts = new HashMap<>();
 
+        for (Patient patient : patients) {
+            Alergie patientAllergy = patient.getPatientAlergies();
+            if (patientAllergy != null) {
+                allergyCounts.put(patientAllergy, allergyCounts.getOrDefault(patientAllergy, 0) + 1);
+            }
+        }
+
+        return allergyCounts;
+    }
 }

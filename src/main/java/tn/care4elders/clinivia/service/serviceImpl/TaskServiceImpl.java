@@ -78,4 +78,9 @@ public class TaskServiceImpl implements TaskService {
             twillioService.makeCall(from, to);
         }
     }
+
+    @Override
+    public List<Task> findTasksByPatientId(Long patientId) {
+        return taskRepository.findTasksByPatientId(patientId);
+    }
 }

@@ -3,12 +3,14 @@ package tn.care4elders.clinivia.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.care4elders.clinivia.entity.Alergie;
 import tn.care4elders.clinivia.entity.Patient;
 import tn.care4elders.clinivia.service.PatientService;
 import tn.care4elders.clinivia.service.SMSService;
 import tn.care4elders.clinivia.service.TwillioService;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/patients")
@@ -79,4 +81,11 @@ public class PatientController {
         patientService.displayRarestBloodTypeDistribution();
     }
 
+
+
+    @GetMapping("/common-allergies")
+    public Map<Alergie, Integer> getCommonPatientAllergies() {
+        List<Patient> allPatients = patientService.getAllPatients();
+        return patientService.countCommonPatientAllergies(allPatients);
+    }
 }

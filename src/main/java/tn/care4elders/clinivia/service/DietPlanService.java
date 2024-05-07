@@ -13,6 +13,6 @@ public interface DietPlanService {
     void deleteDietPlan(Long id);
     List<DietPlan> getAllDietPlans();
     DietPlan updateDietPlan(DietPlan dietPlan);
-    Map<Date, String> assessNutritionalIntake(Long dietPlanId);
+    public Map<Date, Map<String, Object>> assessNutritionalIntake(Long patientId) ;
 
 }
