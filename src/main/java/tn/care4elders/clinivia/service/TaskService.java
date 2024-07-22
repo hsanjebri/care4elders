@@ -11,6 +11,7 @@ public interface TaskService {
     void deleteTask(Long id);
     List<Task> getAllTasks();
     Task updateTask(Task task);
+    public List<Task> findTasksByPatientId(Long patientId) ;
 
 
 

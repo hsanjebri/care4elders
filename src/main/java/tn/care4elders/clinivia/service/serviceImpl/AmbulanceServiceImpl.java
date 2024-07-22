@@ -34,4 +34,6 @@ public class AmbulanceServiceImpl implements AmbulanceService {
     public List<Ambulance>getAllAmbulances(){
         return ambulanceRepository.findAll();
     }
+
+
 }
